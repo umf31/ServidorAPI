@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ServidorAPI.Dominio\ServidorAPI.Dominio.csproj" />
+    <ProjectReference Include="..\ServidorAPI.Persistencia\ServidorAPI.Persistencia.csproj" />
+  </ItemGroup>
+
 </Project>

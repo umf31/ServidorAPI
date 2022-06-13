@@ -4,10 +4,30 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AppDesignerFolder>Propiedades</AppDesignerFolder>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>bin\Debug\net6.0\ServidorAPI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <Folder Include="Controladores\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Librerias\ServidorAPI.Dominio\ServidorAPI.Dominio.csproj" />
+    <ProjectReference Include="..\Librerias\ServidorAPI.Infraestructura\ServidorAPI.Infraestructura.csproj" />
+    <ProjectReference Include="..\Librerias\ServidorAPI.Logica\ServidorAPI.Logica.csproj" />
+    <ProjectReference Include="..\Librerias\ServidorAPI.Persistencia\ServidorAPI.Persistencia.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

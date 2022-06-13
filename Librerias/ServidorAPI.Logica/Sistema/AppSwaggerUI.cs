@@ -31,41 +31,31 @@
 //                 DELEGACION REGIONAL NUEVO LEON
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
-//                https://github.com/umf31/ServidorAPI
-//                     Program: Creado 13-06-2022
+//               https://github.com/umf31/ServidorAPI
+//                  AppSwaggerUI: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Infraestructura.Sistema;
-using System.Reflection;
+using Microsoft.AspNetCore.Builder;
 
-var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+namespace ServidorAPI.Infraestructura.Sistema
 {
-    Args = args,
-    ApplicationName = typeof(Program).Assembly.FullName,
-    ContentRootPath = Directory.GetCurrentDirectory(),
-    EnvironmentName = Environments.Staging,
-    WebRootPath = "Recursos"
-});
-
-builder.Services.AddCors();
-builder.Services.AddControllers();
-builder.Services.AddDataProtection();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddAutentificacion();
-builder.Services.AddSwaggerGen($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
-
-using var app = builder.Build();
-if (app.Environment.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseRouting();
-app.UseAuthentication();
-app.UseAuthorization();
-app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
-app.UseSwagger();
-app.UseSwaggerUI();
-app.MapControllers();
-app.Run();
+    public static class AppSwaggerUI
+    {
+        public static IApplicationBuilder UseSwaggerUI(this IApplicationBuilder app)
+        {
+            string rutaswagger = AppContext.BaseDirectory;
+            app.UseSwaggerUI(options =>
+            {
+                //options.SwaggerEndpoint("/swagger/ServidorAPI/swagger.json", "API-Servidor");
+                //options.SwaggerEndpoint("/swagger/SADIM/swagger.json", "API-SADIM");
+                options.DefaultModelsExpandDepth(-1);
+                options.SwaggerEndpoint("/swagger/ServidorAPI.json", "API-Servidor");
+                options.SwaggerEndpoint("/swagger/SadimAPI.json", "API-SADIM");
+                options.RoutePrefix = "";
+            });
+            return app;
+        }
+    }
+}

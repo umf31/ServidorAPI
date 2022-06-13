@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Librerias", "Librerias", "{B0C867EB-AB07-4956-BE62-BA1B73E33C82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaz", "Interfaz", "{1FB36024-5DAC-4852-B1AE-4AE4830A9635}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pruebas", "Pruebas", "{4487CEAD-344F-466C-A5D7-0B5EF49D6932}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.Dominio", "Librerias\ServidorAPI.Dominio\ServidorAPI.Dominio.csproj", "{526B2B0E-F5CC-4778-93C7-3125CBBB71CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.Infraestructura", "Librerias\ServidorAPI.Infraestructura\ServidorAPI.Infraestructura.csproj", "{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.Persistencia", "Librerias\ServidorAPI.Persistencia\ServidorAPI.Persistencia.csproj", "{0916E472-838E-4B3B-9FF5-B2FB639C3A3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.PruebasFuncionales", "Pruebas\ServidorAPI.PruebasFuncionales\ServidorAPI.PruebasFuncionales.csproj", "{995D703E-E05E-4C91-9A67-9D028AC914B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.PruebasIntegracion", "Pruebas\ServidorAPI.PruebasIntegracion\ServidorAPI.PruebasIntegracion.csproj", "{AF122756-9308-46DA-9FDE-BB10EB41FD2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServidorAPI.PruebasUnitarias", "Pruebas\ServidorAPI.PruebasUnitarias\ServidorAPI.PruebasUnitarias.csproj", "{465A3D10-C9A7-40BD-927B-78BE13B89DDF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServidorAPI", "Interfaz\ServidorAPI.csproj", "{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServidorAPI.Logica", "Librerias\ServidorAPI.Logica\ServidorAPI.Logica.csproj", "{4491699B-438D-4DEE-BE16-D72EAD783300}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{526B2B0E-F5CC-4778-93C7-3125CBBB71CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{526B2B0E-F5CC-4778-93C7-3125CBBB71CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{526B2B0E-F5CC-4778-93C7-3125CBBB71CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{526B2B0E-F5CC-4778-93C7-3125CBBB71CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0916E472-838E-4B3B-9FF5-B2FB639C3A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0916E472-838E-4B3B-9FF5-B2FB639C3A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0916E472-838E-4B3B-9FF5-B2FB639C3A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0916E472-838E-4B3B-9FF5-B2FB639C3A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{995D703E-E05E-4C91-9A67-9D028AC914B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{995D703E-E05E-4C91-9A67-9D028AC914B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{995D703E-E05E-4C91-9A67-9D028AC914B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{995D703E-E05E-4C91-9A67-9D028AC914B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF122756-9308-46DA-9FDE-BB10EB41FD2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF122756-9308-46DA-9FDE-BB10EB41FD2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF122756-9308-46DA-9FDE-BB10EB41FD2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF122756-9308-46DA-9FDE-BB10EB41FD2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465A3D10-C9A7-40BD-927B-78BE13B89DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465A3D10-C9A7-40BD-927B-78BE13B89DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465A3D10-C9A7-40BD-927B-78BE13B89DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465A3D10-C9A7-40BD-927B-78BE13B89DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4491699B-438D-4DEE-BE16-D72EAD783300}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4491699B-438D-4DEE-BE16-D72EAD783300}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4491699B-438D-4DEE-BE16-D72EAD783300}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4491699B-438D-4DEE-BE16-D72EAD783300}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{526B2B0E-F5CC-4778-93C7-3125CBBB71CB} = {B0C867EB-AB07-4956-BE62-BA1B73E33C82}
+		{16C19493-4BB3-455D-8F4D-D99DA2F0ECAD} = {B0C867EB-AB07-4956-BE62-BA1B73E33C82}
+		{0916E472-838E-4B3B-9FF5-B2FB639C3A3F} = {B0C867EB-AB07-4956-BE62-BA1B73E33C82}
+		{995D703E-E05E-4C91-9A67-9D028AC914B6} = {4487CEAD-344F-466C-A5D7-0B5EF49D6932}
+		{AF122756-9308-46DA-9FDE-BB10EB41FD2E} = {4487CEAD-344F-466C-A5D7-0B5EF49D6932}
+		{465A3D10-C9A7-40BD-927B-78BE13B89DDF} = {4487CEAD-344F-466C-A5D7-0B5EF49D6932}
+		{0B9B6DC4-5A8E-475B-BA1A-4F62C8F211D2} = {1FB36024-5DAC-4852-B1AE-4AE4830A9635}
+		{4491699B-438D-4DEE-BE16-D72EAD783300} = {B0C867EB-AB07-4956-BE62-BA1B73E33C82}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D9D84B6-1542-4075-B69A-C771A6E609FA}
+	EndGlobalSection
+EndGlobal

@@ -45,7 +45,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Servidor
 {
-    public class AsistenteMunicipio : ServidorBase<Municipio>, IAsistenteMunicipio
+    public class AsistenteMunicipio : ServidorAsistente<Municipio>, IAsistenteMunicipio
     {
         public AsistenteMunicipio(ServidorContexto db) : base(db)
         {

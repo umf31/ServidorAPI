@@ -42,7 +42,7 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Servidor
 {
-    public interface IAsistenteColonia : IServidorBase<Colonia>
+    public interface IAsistenteColonia : IServidorAsistente<Colonia>
     {
         Task<IEnumerable<Colonia>> ObtenerTodoFiltros();
 

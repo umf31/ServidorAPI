@@ -42,6 +42,6 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Servidor
 {
-    public interface IAsistenteStatus : IServidorBase<Status>
+    public interface IAsistenteStatus : IServidorAsistente<Status>
     { }
 }

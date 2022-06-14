@@ -38,8 +38,10 @@
 #endregion
 
 using ServidorAPI.Dominio.Interfaces.Asistente.Sadim;
+using ServidorAPI.Dominio.Interfaces.Asistente.Servidor;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Persistencia.Asistente.Sadim;
+using ServidorAPI.Persistencia.Asistente.Servidor;
 using ServidorAPI.Persistencia.Conectividad.Contexto;
 
 namespace ServidorAPI.Persistencia.UnidadTrabajo
@@ -48,6 +50,7 @@ namespace ServidorAPI.Persistencia.UnidadTrabajo
     {
         private readonly ServidorContexto db;
         internal readonly IAsistenteProceso asistenteProceso = null!;
+        internal readonly IAsistenteEmpleado asistenteEmpleado = null!;
         internal readonly IAsistentePeriodo asistentePeriodo = null!;
         internal readonly IAsistenteDetalle asistenteDetalle = null!;
         internal readonly IAsistenteMeta asistenteMeta = null!;
@@ -57,6 +60,7 @@ namespace ServidorAPI.Persistencia.UnidadTrabajo
             db = _db;
         }
 
+        public IAsistenteEmpleado AsistenteEmpleado => asistenteEmpleado ?? new AsistenteEmpleado(db);
         public IAsistenteProceso AsistenteProceso => asistenteProceso ?? new AsistenteProceso(db);
         public IAsistentePeriodo AsistentePeriodo => asistentePeriodo ?? new AsistentePeriodo(db);
         public IAsistenteDetalle AsistenteDetalle => asistenteDetalle ?? new AsistenteDetalle(db);

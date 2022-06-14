@@ -44,7 +44,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Servidor
 {
-    public class AsistenteVialidad : ServidorBase<Vialidad>, IAsistenteVialidad
+    public class AsistenteVialidad : ServidorAsistente<Vialidad>, IAsistenteVialidad
     {
         public AsistenteVialidad(ServidorContexto db) : base(db)
         {

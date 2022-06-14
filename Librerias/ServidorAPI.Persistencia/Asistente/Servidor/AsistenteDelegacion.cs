@@ -45,7 +45,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Servidor
 {
-    public class AsistenteDelegacion : ServidorBase<Delegacion>, IAsistenteDelegacion
+    public class AsistenteDelegacion : ServidorAsistente<Delegacion>, IAsistenteDelegacion
     {
         public AsistenteDelegacion(ServidorContexto db) : base(db)
         {

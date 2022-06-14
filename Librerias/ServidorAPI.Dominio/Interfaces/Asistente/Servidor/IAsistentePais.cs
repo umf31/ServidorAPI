@@ -42,6 +42,6 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Servidor
 {
-    public interface IAsistentePais : IServidorBase<Pais>
+    public interface IAsistentePais : IServidorAsistente<Pais>
     { }
 }

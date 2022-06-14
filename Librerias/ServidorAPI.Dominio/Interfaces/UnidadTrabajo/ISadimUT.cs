@@ -38,11 +38,13 @@
 #endregion
 
 using ServidorAPI.Dominio.Interfaces.Asistente.Sadim;
+using ServidorAPI.Dominio.Interfaces.Asistente.Servidor;
 
 namespace ServidorAPI.Dominio.Interfaces.UnidadTrabajo
 {
     public interface ISadimUT : IDisposable
     {
+        IAsistenteEmpleado AsistenteEmpleado { get; }
         IAsistenteProceso AsistenteProceso { get; }
         IAsistentePeriodo AsistentePeriodo { get; }
         IAsistenteDetalle AsistenteDetalle { get; }

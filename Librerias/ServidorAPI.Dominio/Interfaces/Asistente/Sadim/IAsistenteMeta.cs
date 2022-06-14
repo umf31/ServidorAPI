@@ -42,7 +42,7 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Sadim
 {
-    public interface IAsistenteMeta : IServidorBase<Meta>
+    public interface IAsistenteMeta : IServidorAsistente<Meta>
     {
         Task<IEnumerable<Meta>> ObtenerTodoFiltros();
 

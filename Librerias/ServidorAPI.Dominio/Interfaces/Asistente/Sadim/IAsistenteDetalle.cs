@@ -42,7 +42,7 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Sadim
 {
-    public interface IAsistenteDetalle : IServidorBase<Detalles>
+    public interface IAsistenteDetalle : IServidorAsistente<Detalles>
     {
         Task<Detalles> ObtenerPorNombre(string? nombre);
     }

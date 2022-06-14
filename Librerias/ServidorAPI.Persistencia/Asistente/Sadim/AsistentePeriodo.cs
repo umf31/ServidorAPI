@@ -47,7 +47,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Sadim
 {
-    public class AsistentePeriodo : ServidorBase<Periodos>, IAsistentePeriodo
+    public class AsistentePeriodo : ServidorAsistente<Periodos>, IAsistentePeriodo
     {
         public AsistentePeriodo(ServidorContexto db) : base(db)
         { }

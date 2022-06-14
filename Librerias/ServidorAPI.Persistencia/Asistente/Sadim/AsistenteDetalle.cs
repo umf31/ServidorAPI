@@ -47,7 +47,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Sadim
 {
-    public class AsistenteDetalle : ServidorBase<Detalles>, IAsistenteDetalle
+    public class AsistenteDetalle : ServidorAsistente<Detalles>, IAsistenteDetalle
     {
         public AsistenteDetalle(ServidorContexto db) : base(db)
         { }

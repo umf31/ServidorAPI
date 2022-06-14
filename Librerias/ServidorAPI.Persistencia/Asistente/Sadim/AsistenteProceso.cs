@@ -47,7 +47,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Sadim
 {
-    public class AsistenteProceso : ServidorBase<Proceso>, IAsistenteProceso
+    public class AsistenteProceso : ServidorAsistente<Proceso>, IAsistenteProceso
     {
         public AsistenteProceso(ServidorContexto db) : base(db)
         { }

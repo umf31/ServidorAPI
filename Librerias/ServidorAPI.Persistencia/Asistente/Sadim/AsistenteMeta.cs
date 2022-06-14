@@ -47,7 +47,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Sadim
 {
-    public class AsistenteMeta : ServidorBase<Meta>, IAsistenteMeta
+    public class AsistenteMeta : ServidorAsistente<Meta>, IAsistenteMeta
     {
         private readonly ServidorContexto _db;
 

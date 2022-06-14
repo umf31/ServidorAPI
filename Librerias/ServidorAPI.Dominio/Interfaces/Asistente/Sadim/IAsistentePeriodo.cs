@@ -42,7 +42,7 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Sadim
 {
-    public interface IAsistentePeriodo : IServidorBase<Periodos>
+    public interface IAsistentePeriodo : IServidorAsistente<Periodos>
     {
         Task<Periodos> ObtenerPeriodo(string? mes, string? año);
 

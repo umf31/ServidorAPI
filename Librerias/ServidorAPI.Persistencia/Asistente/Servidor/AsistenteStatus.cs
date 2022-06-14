@@ -44,7 +44,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Servidor
 {
-    public class AsistenteStatus : ServidorBase<Status>, IAsistenteStatus
+    public class AsistenteStatus : ServidorAsistente<Status>, IAsistenteStatus
     {
         public AsistenteStatus(ServidorContexto db) : base(db)
         { }

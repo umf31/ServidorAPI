@@ -42,7 +42,7 @@ using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Dominio.Interfaces.Asistente.Sadim
 {
-    public interface IAsistenteProceso : IServidorBase<Proceso>
+    public interface IAsistenteProceso : IServidorAsistente<Proceso>
     {
         Task<bool> ExisteEntidadPorNombreCorto(string? nombreCorto);
     }

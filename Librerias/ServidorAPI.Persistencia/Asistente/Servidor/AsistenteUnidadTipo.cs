@@ -44,7 +44,7 @@ using ServidorAPI.Persistencia.Utils;
 
 namespace ServidorAPI.Persistencia.Asistente.Servidor
 {
-    public class AsistenteUnidadTipo : ServidorBase<UnidadTipo>, IAsistenteUnidadTipo
+    public class AsistenteUnidadTipo : ServidorAsistente<UnidadTipo>, IAsistenteUnidadTipo
     {
         public AsistenteUnidadTipo(ServidorContexto db) : base(db)
         {

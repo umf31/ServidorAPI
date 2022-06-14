@@ -32,23 +32,48 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//       ObjetoTransferencia RendimientoRespuesta: Creado 13-06-2022
+//                   IUtilerias: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
 
-namespace ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta
+using ServidorAPI.Dominio.Servicios.Servidor;
+
+namespace ServidorAPI.Dominio.Interfaces.Utils.Servidor
 {
-    public partial class MetaRespuesta
+    public interface IUtilerias
     {
-        public int? Id { get; set; }
-        public int DetallesId { get; set; }
-        public int? PeriodoId { get; set; }
-        public decimal? RendimientoEsperado { get; set; }
-        public decimal? RendimientoBajo { get; set; }
-        public decimal? RendimientoLimite { get; set; }
-        public decimal? RendimientoMedio { get; set; }
-        public string? ValorReferencia { get; set; }
+        Task<string> CrearFechaInicio(string? mes, string? año);
+
+        Task<string> CrearFechaTermino(string? mes, string? año);
+
+        Task<EncriptacionHash> CrearHash(string? item);
+
+        Task<string> CrearLinkImagen(dynamic dynImagen, string entidad, string? nombre = null);
+
+        Task<string> CrearLinkImagenNoDisponible();
+
+        Task<string> CrearLinkImagenNoDisponibleC();
+
+        Task<string> CrearLinkImagenPredeterminada();
+
+        Task<string> CrearLinkGeolocalizacion(decimal? latitud, decimal? longitud, string entidad, string? entidadNombre = null);
+
+        Task<string> CrearLinkGeolocalizacion(dynamic dynEntidadEditar, decimal? latitud, decimal? longitud, string entidad, string? entidadNombre = null);
+
+        Task<string> CrearNombreUnidad(dynamic editar, string? tipoUnidad, int? numUnidad, string? localidad);
+
+        Task<string> CrearNombreUnidad(string? tipoUnidad, int? numUnidad, string? localidad);
+
+        Task<string> CrearTokenJWTBearer(dynamic dynEmpleado);
+
+        Task EliminarImagen(string ruta, string contenedor);
+
+        Task<bool> VerificaHash(string item, byte[] itemHash, byte[] itemSalt);
+
+        Task<bool> VerificaEntidadNula(object objEntidad);
+
+        Task<bool> VerificaEsNumero(string? item);
     }
 }

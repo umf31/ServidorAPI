@@ -65,6 +65,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseForbidden();
 app.UseUnauthorized();
+app.UseAlimentador();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

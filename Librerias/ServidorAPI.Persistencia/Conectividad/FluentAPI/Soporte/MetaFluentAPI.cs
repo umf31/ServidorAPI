@@ -49,14 +49,14 @@ namespace ServidorAPI.Persistencia.Conectividad.FluentAPI.Soporte
         {
             builder.ToTable("Metas");
             builder.HasIndex(e => e.PeriodoId, "IX_Meta_PeriodoId");
-            builder.HasIndex(e => e.DetalleIndicadorId, "IX_Meta_DetalleIndicadorId");
+            builder.HasIndex(e => e.DetallesId, "IX_Meta_DetallesId");
             builder.HasIndex(e => e.StatusId, "IX_Meta_StatusId");
             builder.HasOne(d => d.Periodo).WithMany(p => p.Metas).HasForeignKey(d => d.PeriodoId);
-            builder.HasOne(d => d.DetalleIndicador).WithMany(p => p.Metas).OnDelete(DeleteBehavior.ClientSetNull).HasForeignKey(d => d.DetalleIndicadorId);
+            builder.HasOne(d => d.Detalles).WithMany(p => p.Metas).OnDelete(DeleteBehavior.ClientSetNull).HasForeignKey(d => d.DetallesId);
             builder.HasOne(d => d.Status).WithMany(p => p.Metas).OnDelete(DeleteBehavior.ClientSetNull).HasForeignKey(d => d.StatusId);
 
             builder.Property(e => e.Id).HasColumnOrder(0);
-            builder.Property(e => e.DetalleIndicadorId).HasColumnOrder(1).IsRequired();
+            builder.Property(e => e.DetallesId).HasColumnOrder(1).IsRequired();
             builder.Property(e => e.PeriodoId).HasColumnOrder(2).IsRequired();
             builder.Property(e => e.RendimientoEsperado).HasColumnOrder(3).HasColumnType("decimal(5, 2)");
             builder.Property(e => e.RendimientoBajo).HasColumnOrder(4).HasColumnType("decimal(5, 2)");

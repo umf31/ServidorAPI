@@ -42,7 +42,7 @@ namespace ServidorAPI.Infraestructura.Objetos.Sadim.Insertar
 {
     public partial class MetaInsertar
     {
-        public int? DetalleIndicadorId { get; set; }
+        public int? DetallesId { get; set; }
         public int? PeriodoId { get; set; }
         public decimal? RendimientoEsperado { get; set; }
         public decimal? RendimientoBajo { get; set; }

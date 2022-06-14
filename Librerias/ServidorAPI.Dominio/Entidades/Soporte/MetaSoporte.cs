@@ -42,7 +42,7 @@ namespace ServidorAPI.Dominio.Entidades.Soporte
     public class MetaSoporte
     {
         public int Id { get; set; }
-        public int DetalleIndicadorId { get; set; }
+        public int DetallesId { get; set; }
         public int PeriodoId { get; set; }
         public decimal RendimientoEsperado { get; set; }
         public decimal RendimientoBajo { get; set; }
@@ -55,6 +55,6 @@ namespace ServidorAPI.Dominio.Entidades.Soporte
         public int StatusId { get; set; }
         public virtual StatusSoporte Status { get; set; } = null!;
         public virtual PeriodoSoporte Periodo { get; set; } = null!;
-        public virtual DetallesSoporte DetalleIndicador { get; set; } = null!;
+        public virtual DetallesSoporte Detalles { get; set; } = null!;
     }
 }

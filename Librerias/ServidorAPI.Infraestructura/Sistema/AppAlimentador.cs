@@ -32,23 +32,46 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//       ObjetoTransferencia RendimientoRespuesta: Creado 13-06-2022
+//            Sistema AgregarAlimentador: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using ServidorAPI.Dominio.Interfaces.Utils.Servidor;
 
-namespace ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta
+namespace ServidorAPI.Infraestructura.Sistema
 {
-    public partial class MetaRespuesta
+    public static class AppAlimentador
     {
-        public int? Id { get; set; }
-        public int DetallesId { get; set; }
-        public int? PeriodoId { get; set; }
-        public decimal? RendimientoEsperado { get; set; }
-        public decimal? RendimientoBajo { get; set; }
-        public decimal? RendimientoLimite { get; set; }
-        public decimal? RendimientoMedio { get; set; }
-        public string? ValorReferencia { get; set; }
+        public static IApplicationBuilder UseAlimentador(this IApplicationBuilder app)
+        {
+            IServiceScopeFactory? scopedFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
+            using (var scope = scopedFactory!.CreateScope())
+            {
+                var alimentador = scope.ServiceProvider.GetService<IAlimentador>();
+                alimentador!.CrearSadimDb().Wait();
+                alimentador!.InyectarStatus().Wait();
+                alimentador!.InyectarCategorias().Wait();
+                alimentador!.InyectarServicios().Wait();
+                alimentador!.InyectarRoles().Wait();
+                alimentador!.InyectarPaises().Wait();
+                alimentador!.InyectarEstados().Wait();
+                alimentador!.InyectarMunicipios().Wait();
+                alimentador!.InyectarAsentamientos().Wait();
+                alimentador!.InyectarColonias().Wait();
+                alimentador!.InyectarDelegaciones().Wait();
+                alimentador!.InyectarUnidadesTipo().Wait();
+                alimentador!.InyectarVialidades().Wait();
+                alimentador!.InyectarUnidades().Wait();
+                alimentador!.InyectarCategoriaServicios().Wait();
+                alimentador!.InyectarProcesos().Wait();
+                alimentador!.InyectarPeriodos().Wait();
+                alimentador!.InyectarDetalles().Wait();
+                alimentador!.InyectarMetas().Wait();
+            }
+            return app;
+        }
     }
 }

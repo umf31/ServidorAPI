@@ -32,23 +32,38 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//       ObjetoTransferencia RendimientoRespuesta: Creado 13-06-2022
+//                   IPagServidor: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
+using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using ServidorAPI.Dominio.Entidades.Sadim;
+using ServidorAPI.Dominio.Interfaces.Utils.Sadim;
+using ServidorAPI.Dominio.Interfaces.Utils.Servidor;
+using ServidorAPI.Logica.Utils.Servidor;
 
-namespace ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta
+namespace ServidorAPI.Logica.Utils.Sadim
 {
-    public partial class MetaRespuesta
+    public class PagSadim : IPagSadim
     {
-        public int? Id { get; set; }
-        public int DetallesId { get; set; }
-        public int? PeriodoId { get; set; }
-        public decimal? RendimientoEsperado { get; set; }
-        public decimal? RendimientoBajo { get; set; }
-        public decimal? RendimientoLimite { get; set; }
-        public decimal? RendimientoMedio { get; set; }
-        public string? ValorReferencia { get; set; }
+        private readonly IMapper mapper;
+        private readonly IHttpContextAccessor accessor;
+        internal readonly IPaginacion<Detalles> detalles = null!;
+        internal readonly IPaginacion<Meta> meta = null!;
+        internal readonly IPaginacion<Periodos> periodo = null!;
+        internal readonly IPaginacion<Proceso> proceso = null!;
+
+        public PagSadim(IMapper _mapper, IHttpContextAccessor _accessor)
+        {
+            mapper = _mapper;
+            accessor = _accessor;
+        }
+
+        public IPaginacion<Detalles> Detalles => detalles ?? new Paginacion<Detalles>(mapper, accessor);
+        public IPaginacion<Meta> Meta => meta ?? new Paginacion<Meta>(mapper, accessor);
+        public IPaginacion<Periodos> Periodo => periodo ?? new Paginacion<Periodos>(mapper, accessor);
+        public IPaginacion<Proceso> Proceso => proceso ?? new Paginacion<Proceso>(mapper, accessor);
     }
 }

@@ -32,23 +32,25 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//       ObjetoTransferencia RendimientoRespuesta: Creado 13-06-2022
+//                   IPaginacion: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
+using ServidorAPI.Dominio.Servicios.Servidor;
 
-namespace ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta
+namespace ServidorAPI.Dominio.Interfaces.Utils.Servidor
 {
-    public partial class MetaRespuesta
+    public interface IPaginacion<Entidad>
     {
-        public int? Id { get; set; }
-        public int DetallesId { get; set; }
-        public int? PeriodoId { get; set; }
-        public decimal? RendimientoEsperado { get; set; }
-        public decimal? RendimientoBajo { get; set; }
-        public decimal? RendimientoLimite { get; set; }
-        public decimal? RendimientoMedio { get; set; }
-        public string? ValorReferencia { get; set; }
+        Task<Lista<Entidad>> CrearLista(IEnumerable<Entidad> registros, int numeroPagina, int registrosPagina);
+
+        Task<Metadatos> CrearMetadatos(Lista<Entidad> entidad, string control);
+
+        Task<string> Informacion(string control, int? Id);
+
+        Task<string> PaginaSiguiente(string control, int paginaActual, int registrosPagina);
+
+        Task<string> PaginaAnterior(string control, int paginaActual, int registrosPagina);
     }
 }

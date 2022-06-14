@@ -48,8 +48,8 @@ namespace ServidorAPI.Infraestructura.Filtros.FluentValidator.Sadim
     {
         public ValidacionMetaInsertar()
         {
-            RuleFor(x => x.DetalleIndicadorId).Requerido();
-            RuleFor(x => x.PeriodoId).Requerido().When(x => x.DetalleIndicadorId > 0);
+            RuleFor(x => x.DetallesId).Requerido();
+            RuleFor(x => x.PeriodoId).Requerido().When(x => x.DetallesId > 0);
             RuleFor(x => x.RendimientoEsperado).ValorRefenciaReq().When(x => x.PeriodoId > 0);
             RuleFor(x => x.RendimientoBajo).ValorRefenciaReq().When(x => x.RendimientoEsperado != null);
             RuleFor(x => x.RendimientoLimite).ValorRefenciaReq().When(x => x.RendimientoBajo != null);
@@ -62,7 +62,7 @@ namespace ServidorAPI.Infraestructura.Filtros.FluentValidator.Sadim
     {
         public ValidacionMetaEditar()
         {
-            RuleFor(x => x.DetalleIndicadorId).Requerido().When(x => x.DetalleIndicadorId > 0);
+            RuleFor(x => x.DetallesId).Requerido().When(x => x.DetallesId > 0);
             RuleFor(x => x.PeriodoId).Requerido().When(x => x.PeriodoId > 0);
             RuleFor(x => x.RendimientoEsperado).ValorRefenciaReq().When(x => x.RendimientoEsperado > 0);
             RuleFor(x => x.RendimientoBajo).ValorRefenciaReq().When(x => x.RendimientoBajo > 0);

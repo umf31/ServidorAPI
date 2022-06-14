@@ -71,7 +71,7 @@ namespace ServidorAPI.Infraestructura.Mapper.Servidor
                 .ForMember(dest => dest.Vialidades, opt => opt.Ignore())
                 .ForMember(dest => dest.Periodos, opt => opt.Ignore())
                 .ForMember(dest => dest.Procesos, opt => opt.Ignore())
-                .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore())
+                .ForMember(dest => dest.Detalles, opt => opt.Ignore())
                 .ForMember(dest => dest.Metas, opt => opt.Ignore());
 
             CreateMap<StatusInsertar, Status>()
@@ -88,7 +88,7 @@ namespace ServidorAPI.Infraestructura.Mapper.Servidor
                 .ForMember(dest => dest.Vialidades, opt => opt.Ignore())
                 .ForMember(dest => dest.Periodos, opt => opt.Ignore())
                 .ForMember(dest => dest.Procesos, opt => opt.Ignore())
-                .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore())
+                .ForMember(dest => dest.Detalles, opt => opt.Ignore())
                 .ForMember(dest => dest.Metas, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
@@ -110,7 +110,7 @@ namespace ServidorAPI.Infraestructura.Mapper.Servidor
                 .ForMember(dest => dest.Vialidades, opt => opt.Ignore())
                 .ForMember(dest => dest.Periodos, opt => opt.Ignore())
                 .ForMember(dest => dest.Procesos, opt => opt.Ignore())
-                .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore())
+                .ForMember(dest => dest.Detalles, opt => opt.Ignore())
                 .ForMember(dest => dest.Metas, opt => opt.Ignore())
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())

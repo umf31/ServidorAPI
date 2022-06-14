@@ -44,7 +44,7 @@ namespace ServidorAPI.Dominio.Entidades.Sadim
 {
     public class Meta : EntidadBase
     {
-        public int DetalleIndicadorId { get; set; }
+        public int DetallesId { get; set; }
         public int PeriodoId { get; set; }
         public decimal RendimientoEsperado { get; set; }
         public decimal RendimientoBajo { get; set; }
@@ -53,6 +53,6 @@ namespace ServidorAPI.Dominio.Entidades.Sadim
         public string ValorReferencia { get; set; } = null!;
         public virtual Status Status { get; set; } = null!;
         public virtual Periodos Periodo { get; set; } = null!;
-        public virtual Detalles DetalleIndicador { get; set; } = null!;
+        public virtual Detalles Detalles { get; set; } = null!;
     }
 }

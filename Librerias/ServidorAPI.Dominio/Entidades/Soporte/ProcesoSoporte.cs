@@ -52,6 +52,6 @@ namespace ServidorAPI.Dominio.Entidades.Soporte
         public int StatusId { get; set; }
 
         public virtual StatusSoporte Status { get; set; } = null!;
-        public virtual ICollection<DetallesSoporte> DetalleIndicador { get; set; } = null!;
+        public virtual ICollection<DetallesSoporte> Detalles { get; set; } = null!;
     }
 }

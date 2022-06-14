@@ -57,7 +57,7 @@ namespace ServidorAPI.Dominio.Entidades.Servidor
         public virtual ICollection<Vialidad> Vialidades { get; set; } = null!;
         public virtual ICollection<Periodos> Periodos { get; set; } = null!;
         public virtual ICollection<Proceso> Procesos { get; set; } = null!;
-        public virtual ICollection<Detalles> DetalleIndicador { get; set; } = null!;
+        public virtual ICollection<Detalles> Detalles { get; set; } = null!;
         public virtual ICollection<Meta> Metas { get; set; } = null!;
     }
 }

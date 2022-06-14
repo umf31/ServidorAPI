@@ -38,6 +38,7 @@
 #endregion
 
 using ServidorAPI.Infraestructura.Sistema;
+using ServidorAPI.Logica.Utils.Servidor;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions
@@ -52,6 +53,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 builder.Services.AddCors();
 builder.Services.AddController();
 builder.Services.AddDataProtection();
+builder.Services.AddDependencias();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutentificacion();
 builder.Services.AddSwaggerGen($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");

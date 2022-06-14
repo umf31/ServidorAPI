@@ -60,12 +60,12 @@ namespace ServidorAPI.Infraestructura.Mapper.Sadim
 
             CreateMap<ProcesoSoporte, Proceso>()
                 .ForMember(dest => dest.Status, opt => opt.Ignore())
-                .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore());
+                .ForMember(dest => dest.Detalles, opt => opt.Ignore());
 
             CreateMap<ProcesoInsertar, Proceso>()
                .ForMember(dest => dest.Imagen, opt => opt.Ignore())
                .ForMember(dest => dest.Status, opt => opt.Ignore())
-               .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore())
+               .ForMember(dest => dest.Detalles, opt => opt.Ignore())
                .ForMember(dest => dest.Id, opt => opt.Ignore())
                .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
                .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())
@@ -75,7 +75,7 @@ namespace ServidorAPI.Infraestructura.Mapper.Sadim
             CreateMap<ProcesoEditar, Proceso>()
                .ForMember(dest => dest.Imagen, opt => opt.Ignore())
                .ForMember(dest => dest.Status, opt => opt.Ignore())
-               .ForMember(dest => dest.DetalleIndicador, opt => opt.Ignore())
+               .ForMember(dest => dest.Detalles, opt => opt.Ignore())
                .ForMember(dest => dest.Id, opt => opt.Ignore())
                .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
                .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())

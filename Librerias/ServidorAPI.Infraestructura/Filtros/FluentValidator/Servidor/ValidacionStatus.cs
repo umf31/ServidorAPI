@@ -32,20 +32,31 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                 Excepción NotFound: Creado 13-06-2022
+//                 ValidacionStatus: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-namespace ServidorAPI.Dominio.Excepciones
-{
-    public class NotFound : Exception
-    {
-        public NotFound()
-        { }
+using FluentValidation;
+using ServidorAPI.Infraestructura.Filtros.FluentValidator.Utils;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Editar;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Insertar;
 
-        public NotFound(string mensaje) : base(mensaje)
+namespace ServidorAPI.Infraestructura.Filtros.FluentValidator.Servidor
+{
+    public class ValidacionStatusInsertar : AbstractValidator<StatusInsertar>
+    {
+        public ValidacionStatusInsertar()
         {
+            RuleFor(x => x.Nombre).NombreReq();
+        }
+    }
+
+    public class ValidacionStatusEditar : AbstractValidator<StatusEditar>
+    {
+        public ValidacionStatusEditar()
+        {
+            RuleFor(x => x.Nombre).NombreReq().When(x => x.Nombre != null);
         }
     }
 }

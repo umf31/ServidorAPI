@@ -32,12 +32,13 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//     ObjetoTransferencia DetalleIndicadorRespuesta: Creado 05-06-2022
+//     ObjetoTransferencia DetalleIndicadorRespuesta: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-namespace ServidorAPI.Infraestructura.Objetos.Base.Respuesta
+
+namespace ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta
 {
     public partial class DetallesRespuesta
     {

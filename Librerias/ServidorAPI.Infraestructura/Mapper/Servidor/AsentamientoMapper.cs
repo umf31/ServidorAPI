@@ -32,20 +32,53 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                 Excepción NotFound: Creado 13-06-2022
+//             Mapeo AsentamientoMapper: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-namespace ServidorAPI.Dominio.Excepciones
-{
-    public class NotFound : Exception
-    {
-        public NotFound()
-        { }
+using AutoMapper;
+using ServidorAPI.Dominio.Entidades.Servidor;
+using ServidorAPI.Dominio.Entidades.Soporte;
+using ServidorAPI.Dominio.Servicios.Servidor;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Editar;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Insertar;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
 
-        public NotFound(string mensaje) : base(mensaje)
+namespace ServidorAPI.Infraestructura.Mapper.Servidor
+{
+    public class AsentamientoMapper : Profile
+    {
+        public AsentamientoMapper()
         {
+            CreateMap<Asentamiento, AsentamientoRespuesta>();
+
+            CreateMap<Lista<Asentamiento>, Metadatos>()
+              .ForMember(dest => dest.PaginaSiguiente, opt => opt.Ignore())
+              .ForMember(dest => dest.PaginaAnterior, opt => opt.Ignore());
+
+            CreateMap<AsentamientoSoporte, Asentamiento>()
+                .ForMember(dest => dest.Status, opt => opt.Ignore())
+                .ForMember(dest => dest.Colonias, opt => opt.Ignore());
+
+            CreateMap<AsentamientoInsertar, Asentamiento>()
+               .ForMember(dest => dest.Status, opt => opt.Ignore())
+               .ForMember(dest => dest.Colonias, opt => opt.Ignore())
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())
+               .ForMember(dest => dest.UsuarioMod, opt => opt.Ignore())
+               .ForMember(dest => dest.StatusId, opt => opt.Ignore());
+
+            CreateMap<AsentamientoEditar, Asentamiento>()
+              .ForMember(dest => dest.Status, opt => opt.Ignore())
+              .ForMember(dest => dest.Colonias, opt => opt.Ignore())
+              .ForMember(dest => dest.Id, opt => opt.Ignore())
+              .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
+              .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())
+              .ForMember(dest => dest.UsuarioMod, opt => opt.Ignore())
+              .ForMember(dest => dest.StatusId, opt => opt.Ignore())
+              .ForAllMembers(opt => opt.Condition((origen, destino, resultado) => { return resultado != null; }));
         }
     }
 }

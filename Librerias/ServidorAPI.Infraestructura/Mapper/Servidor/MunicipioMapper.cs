@@ -32,43 +32,68 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                ExcepcionBloqueado: Creado 13-06-2022
+//              Mapeo MunicipioMapper: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-using ServidorAPI.Dominio.Excepciones;
+using AutoMapper;
+using ServidorAPI.Dominio.Entidades.Servidor;
+using ServidorAPI.Dominio.Entidades.Soporte;
+using ServidorAPI.Dominio.Servicios.Servidor;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Editar;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Insertar;
 using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
-using ServidorAPI.Persistencia.Informacion;
-using System.Net;
 
-namespace ServidorAPI.Infraestructura.Filtros.ControlExcepciones
+namespace ServidorAPI.Infraestructura.Mapper.Servidor
 {
-    public class ExcepcionBloqueado : IExceptionFilter
+    public class MunicipioMapper : Profile
     {
-        public void OnException(ExceptionContext contexto)
+        public MunicipioMapper()
         {
-            if (contexto.Exception.GetType() == typeof(Locked))
-            {
-                var excepcion = (Locked)contexto.Exception;
-                var validacion = new DetalleRespuesta
-                {
-                    Resultado = false,
-                    Encabezado = Mensaje.Encabezado.StatusCode423,
-                    Detalle = excepcion.Message,
-                    StatusCode = Mensaje.Excepcion.StatusCode423,
-                    TipoRespuesta = Mensaje.TipoRespuesta.Error
-                };
-                var json = new
-                {
-                    Detalles = validacion
-                };
-                contexto.Result = new ObjectResult(json);
-                contexto.HttpContext.Response.StatusCode = (int)HttpStatusCode.Locked;
-                contexto.ExceptionHandled = true;
-            }
+            CreateMap<Municipio, MunicipioRespuesta>()
+                .ForMember(dest => dest.Estado, opt => opt.MapFrom(origen => origen.Estado.Nombre));
+
+            CreateMap<Lista<Municipio>, Metadatos>()
+               .ForMember(dest => dest.PaginaSiguiente, opt => opt.Ignore())
+               .ForMember(dest => dest.PaginaAnterior, opt => opt.Ignore());
+
+            CreateMap<MunicipioSoporte, Municipio>()
+                .ForMember(dest => dest.Estado, opt => opt.Ignore())
+                .ForMember(dest => dest.Status, opt => opt.Ignore())
+                .ForMember(dest => dest.Colonias, opt => opt.Ignore())
+                .ForMember(dest => dest.Unidades, opt => opt.Ignore());
+
+            CreateMap<MunicipioInsertar, Municipio>()
+               .ForMember(dest => dest.Geolocalizacion, opt => opt.Ignore())
+               .ForMember(dest => dest.Imagen, opt => opt.Ignore())
+               .ForMember(dest => dest.Estado, opt => opt.Ignore())
+               .ForMember(dest => dest.Status, opt => opt.Ignore())
+               .ForMember(dest => dest.Colonias, opt => opt.Ignore())
+               .ForMember(dest => dest.Unidades, opt => opt.Ignore())
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())
+               .ForMember(dest => dest.UsuarioMod, opt => opt.Ignore())
+               .ForMember(dest => dest.StatusId, opt => opt.Ignore());
+
+            CreateMap<MunicipioEditar, Municipio>()
+               .ForMember(dest => dest.Geolocalizacion, opt => opt.Ignore())
+               .ForMember(dest => dest.Imagen, opt => opt.Ignore())
+               .ForMember(dest => dest.Estado, opt => opt.Ignore())
+               .ForMember(dest => dest.Status, opt => opt.Ignore())
+               .ForMember(dest => dest.Colonias, opt => opt.Ignore())
+               .ForMember(dest => dest.Unidades, opt => opt.Ignore())
+               .ForMember(dest => dest.Id, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaCreacion, opt => opt.Ignore())
+               .ForMember(dest => dest.FechaModificacion, opt => opt.Ignore())
+               .ForMember(dest => dest.UsuarioMod, opt => opt.Ignore())
+               .ForMember(dest => dest.StatusId, opt => opt.Ignore())
+               .ForAllMembers(opt => opt.Condition((origen, destino, resultado) => resultado != null));
+
+            CreateMap<MunicipioInsertar, UtileriasRespuesta>();
+
+            CreateMap<MunicipioEditar, UtileriasRespuesta>();
         }
     }
 }

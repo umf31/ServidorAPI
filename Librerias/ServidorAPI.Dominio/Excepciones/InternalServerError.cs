@@ -32,7 +32,7 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//          Excepción InternalServerError: Creado 05-06-2022
+//          Excepción InternalServerError: Creado 13-06-2022
 //=======================================================================
 
 #endregion

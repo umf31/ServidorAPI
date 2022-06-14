@@ -61,7 +61,7 @@ namespace ServidorAPI.Dominio.Entidades.Soporte
         public virtual ICollection<VialidadSoporte> Vialidades { get; set; } = null!;
         public virtual ICollection<PeriodoSoporte> Periodos { get; set; } = null!;
         public virtual ICollection<ProcesoSoporte> Procesos { get; set; } = null!;
-        public virtual ICollection<DetalleIndicadorSoporte> DetalleIndicador { get; set; } = null!;
+        public virtual ICollection<DetallesSoporte> DetalleIndicador { get; set; } = null!;
         public virtual ICollection<MetaSoporte> Metas { get; set; } = null!;
         public virtual ICollection<IndicadorSoporte> Indicadores { get; set; } = null!;
     }

@@ -37,7 +37,7 @@
 
 #endregion
 
-using ServidorAPI.Dominio.Servicios.Base;
+using ServidorAPI.Dominio.Servicios.Servidor;
 
 namespace ServidorAPI.Infraestructura.Objetos.Servidor.Consulta
 {

@@ -32,22 +32,19 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                ExcepcionRespuesta: Creado 13-06-2022
+//                 Excepción Locked: Creado 05-06-2022
 //=======================================================================
 
 #endregion
 
-using System.Text.Json;
-
-namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
+namespace ServidorAPI.Dominio.Excepciones
 {
-    public class ExcepcionRespuesta
+    public class Locked : Exception
     {
-        public DetalleRespuesta? Detalles { get; set; }
+        public Locked()
+        { }
 
-        public override string ToString()
-        {
-            return JsonSerializer.Serialize(this);
-        }
+        public Locked(string mensaje) : base(mensaje)
+        { }
     }
 }

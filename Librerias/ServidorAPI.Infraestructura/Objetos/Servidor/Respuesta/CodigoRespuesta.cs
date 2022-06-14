@@ -37,7 +37,6 @@
 
 #endregion
 
-using ServidorAPI.Infraestructura.Objetos.Sadim.Respuesta;
 
 namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
 {

@@ -50,7 +50,7 @@ var builder = WebApplication.CreateBuilder(new WebApplicationOptions
 });
 
 builder.Services.AddCors();
-builder.Services.AddControllers();
+builder.Services.AddController();
 builder.Services.AddDataProtection();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddAutentificacion();
@@ -61,6 +61,8 @@ if (app.Environment.IsDevelopment()) { app.UseDeveloperExceptionPage(); }
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseForbidden();
+app.UseUnauthorized();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

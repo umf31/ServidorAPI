@@ -53,6 +53,6 @@ namespace ServidorAPI.Dominio.Entidades.Sadim
         public string ValorReferencia { get; set; } = null!;
         public virtual Status Status { get; set; } = null!;
         public virtual Periodos Periodo { get; set; } = null!;
-        public virtual DetalleIndicador DetalleIndicador { get; set; } = null!;
+        public virtual Detalles DetalleIndicador { get; set; } = null!;
     }
 }

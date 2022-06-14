@@ -32,22 +32,47 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                ExcepcionRespuesta: Creado 13-06-2022
+//               ExcepcionModelState: Creado 05-06-2022
 //=======================================================================
 
 #endregion
 
-using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
+using ServidorAPI.Persistencia.Informacion;
 
-namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
+namespace ServidorAPI.Infraestructura.Filtros.ControlExcepciones
 {
-    public class ExcepcionRespuesta
+    public class ExcepcionModelState : IAsyncActionFilter
     {
-        public DetalleRespuesta? Detalles { get; set; }
-
-        public override string ToString()
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            return JsonSerializer.Serialize(this);
+            if (!context.ModelState.IsValid)
+            {
+                var obtenerError = context.ModelState.Values.Where(x => x.Errors.Count > 0)
+                    .SelectMany(x => x.Errors)
+                    .Select(x => x.ErrorMessage)
+                    .ToList();
+
+                var detalleRespuesta = obtenerError.Where(x => x.Contains('ͺ')).First();
+                var validacion = new DetalleRespuesta
+                {
+                    Resultado = false,
+                    Encabezado = Mensaje.Encabezado.StatusCode400,
+                    Detalle = detalleRespuesta,
+
+                    StatusCode = Mensaje.Excepcion.StatusCode400,
+                    TipoRespuesta = Mensaje.TipoRespuesta.Error
+                };
+                var json = new
+                {
+                    Detalles = validacion
+                };
+                context.Result = new BadRequestObjectResult(json);
+                return;
+            }
+            await next();
         }
     }
 }

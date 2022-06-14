@@ -32,22 +32,25 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                ExcepcionRespuesta: Creado 13-06-2022
+//      ObjetoTransferencia DetalleIndicadorInsertar: Creado 13-06-2022
 //=======================================================================
 
 #endregion
 
-using System.Text.Json;
 
-namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
+namespace ServidorAPI.Infraestructura.Objetos.Sadim.Insertar
 {
-    public class ExcepcionRespuesta
+    public partial class DetallesInsertar
     {
-        public DetalleRespuesta? Detalles { get; set; }
-
-        public override string ToString()
-        {
-            return JsonSerializer.Serialize(this);
-        }
+        public int? ProcesoId { get; set; }
+        public string? Nombre { get; set; }
+        public string? Descripcion { get; set; }
+        public string? DescripcionCorta { get; set; }
+        public string? Objetivo { get; set; }
+        public string? NumeradorDescripcion { get; set; }
+        public string? DenominadorDescripcion { get; set; }
+        public int? Multiplicador { get; set; }
+        public string? Interpretacion { get; set; }
+        public string? Periocidad { get; set; }
     }
 }

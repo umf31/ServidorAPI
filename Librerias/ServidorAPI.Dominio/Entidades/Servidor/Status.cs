@@ -37,15 +37,8 @@
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Indicadores.Caispn;
-using ServidorAPI.Dominio.Entidades.Indicadores.CancerMama;
-using ServidorAPI.Dominio.Entidades.Indicadores.CervicoUterino;
-using ServidorAPI.Dominio.Entidades.Indicadores.Diabetes;
-using ServidorAPI.Dominio.Entidades.Indicadores.Hipertension;
-using ServidorAPI.Dominio.Entidades.Indicadores.Materna;
-using ServidorAPI.Dominio.Entidades.Indicadores.Obesidad;
 using ServidorAPI.Dominio.Entidades.Sadim;
-using ServidorAPI.Dominio.Servicios.Base;
+using ServidorAPI.Dominio.Servicios.Servidor;
 
 namespace ServidorAPI.Dominio.Entidades.Servidor
 {
@@ -64,30 +57,7 @@ namespace ServidorAPI.Dominio.Entidades.Servidor
         public virtual ICollection<Vialidad> Vialidades { get; set; } = null!;
         public virtual ICollection<Periodos> Periodos { get; set; } = null!;
         public virtual ICollection<Proceso> Procesos { get; set; } = null!;
-        public virtual ICollection<DetalleIndicador> DetalleIndicador { get; set; } = null!;
+        public virtual ICollection<Detalles> DetalleIndicador { get; set; } = null!;
         public virtual ICollection<Meta> Metas { get; set; } = null!;
-        public virtual ICollection<Dm01Unidad> Dm01Unidad { get; set; } = null!;
-        public virtual ICollection<Dm02Unidad> Dm02Unidad { get; set; } = null!;
-        public virtual ICollection<Dm04Unidad> Dm04Unidad { get; set; } = null!;
-        public virtual ICollection<Dm05Unidad> Dm05Unidad { get; set; } = null!;
-        public virtual ICollection<Eh01Unidad> Eh01Unidad { get; set; } = null!;
-        public virtual ICollection<Eh02Unidad> Eh02Unidad { get; set; } = null!;
-        public virtual ICollection<Eh04Unidad> Eh04Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
-        public virtual ICollection<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna01Unidad> Materna01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna02Unidad> Materna02Unidad { get; set; } = null!;
-        public virtual ICollection<Materna03Unidad> Materna03Unidad { get; set; } = null!;
-        public virtual ICollection<Materna04Unidad> Materna04Unidad { get; set; } = null!;
-        public virtual ICollection<SOb01Unidad> SOb01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
     }
 }

@@ -32,22 +32,43 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                ExcepcionRespuesta: Creado 13-06-2022
+//                ExcepcionBloqueado: Creado 05-06-2022
 //=======================================================================
 
 #endregion
 
-using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using ServidorAPI.Dominio.Excepciones;
+using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
+using ServidorAPI.Persistencia.Informacion;
+using System.Net;
 
-namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
+namespace ServidorAPI.Infraestructura.Filtros.ControlExcepciones
 {
-    public class ExcepcionRespuesta
+    public class ExcepcionBloqueado : IExceptionFilter
     {
-        public DetalleRespuesta? Detalles { get; set; }
-
-        public override string ToString()
+        public void OnException(ExceptionContext contexto)
         {
-            return JsonSerializer.Serialize(this);
+            if (contexto.Exception.GetType() == typeof(Locked))
+            {
+                var excepcion = (Locked)contexto.Exception;
+                var validacion = new DetalleRespuesta
+                {
+                    Resultado = false,
+                    Encabezado = Mensaje.Encabezado.StatusCode423,
+                    Detalle = excepcion.Message,
+                    StatusCode = Mensaje.Excepcion.StatusCode423,
+                    TipoRespuesta = Mensaje.TipoRespuesta.Error
+                };
+                var json = new
+                {
+                    Detalles = validacion
+                };
+                contexto.Result = new ObjectResult(json);
+                contexto.HttpContext.Response.StatusCode = (int)HttpStatusCode.Locked;
+                contexto.ExceptionHandled = true;
+            }
         }
     }
 }

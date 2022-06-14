@@ -48,6 +48,6 @@ namespace ServidorAPI.Dominio.Entidades.Sadim
         public string Descripcion { get; set; } = null!;
         public string? Imagen { get; set; }
         public virtual Status Status { get; set; } = null!;
-        public virtual ICollection<DetalleIndicador> DetalleIndicador { get; set; } = null!;
+        public virtual ICollection<Detalles> DetalleIndicador { get; set; } = null!;
     }
 }

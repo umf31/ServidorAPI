@@ -32,19 +32,20 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//              DetalleIndicadorConsulta: Creado 13-06-2022
+//                 Excepción NotFound: Creado 05-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Servicios.Base;
-
-namespace ServidorAPI.Infraestructura.Objetos.Sadim.Consulta
+namespace ServidorAPI.Dominio.Excepciones
 {
-    public partial class DetalleConsulta : ConsultaBase
+    public class NotFound : Exception
     {
-        public int? Id { get; set; }
-        public string? Nombre { get; set; }
-        public int? ProcesoId { get; set; }
+        public NotFound()
+        { }
+
+        public NotFound(string mensaje) : base(mensaje)
+        {
+        }
     }
 }

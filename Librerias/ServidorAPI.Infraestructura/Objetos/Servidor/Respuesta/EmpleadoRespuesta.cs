@@ -37,7 +37,7 @@
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Base;
+using ServidorAPI.Dominio.Entidades.Servidor;
 
 namespace ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta
 {

@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Informacion\**" />
+    <EmbeddedResource Remove="Informacion\**" />
+    <None Remove="Informacion\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.0.3" />
     <PackageReference Include="MailKit" Version="3.3.0" />

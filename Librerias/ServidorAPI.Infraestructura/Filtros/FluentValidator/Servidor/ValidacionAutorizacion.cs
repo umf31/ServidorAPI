@@ -38,9 +38,9 @@
 #endregion
 
 using FluentValidation;
+using ServidorAPI.Dominio.Servicios.Informacion;
 using ServidorAPI.Infraestructura.Filtros.FluentValidator.Utils;
 using ServidorAPI.Infraestructura.Objetos.Servidor.Insertar;
-using ServidorAPI.Persistencia.Informacion;
 
 namespace ServidorAPI.Infraestructura.Filtros.FluentValidator.Servidor
 {

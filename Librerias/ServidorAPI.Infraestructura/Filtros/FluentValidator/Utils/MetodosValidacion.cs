@@ -39,7 +39,7 @@
 
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
-using ServidorAPI.Persistencia.Informacion;
+using ServidorAPI.Dominio.Servicios.Informacion;
 
 namespace ServidorAPI.Infraestructura.Filtros.FluentValidator.Utils
 {

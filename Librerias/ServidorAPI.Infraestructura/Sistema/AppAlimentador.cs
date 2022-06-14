@@ -39,7 +39,7 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using ServidorAPI.Dominio.Interfaces.Utils.Servidor;
+using ServidorAPI.Dominio.Interfaces.Utils;
 
 namespace ServidorAPI.Infraestructura.Sistema
 {

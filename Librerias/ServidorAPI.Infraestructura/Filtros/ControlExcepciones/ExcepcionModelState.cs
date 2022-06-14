@@ -39,8 +39,8 @@
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using ServidorAPI.Dominio.Servicios.Informacion;
 using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
-using ServidorAPI.Persistencia.Informacion;
 
 namespace ServidorAPI.Infraestructura.Filtros.ControlExcepciones
 {

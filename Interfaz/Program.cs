@@ -38,7 +38,7 @@
 #endregion
 
 using ServidorAPI.Infraestructura.Sistema;
-using ServidorAPI.Logica.Utils.Servidor;
+using ServidorAPI.Logica.Utils;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions

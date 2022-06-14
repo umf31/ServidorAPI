@@ -40,7 +40,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using ServidorAPI.Persistencia.Informacion;
+using ServidorAPI.Dominio.Servicios.Informacion;
 using System.Text;
 
 namespace ServidorAPI.Infraestructura.Sistema

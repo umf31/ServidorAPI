@@ -32,7 +32,7 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                LogicaIndicadorTipo: Creado 05-06-2022
+//                LogicaIndicadorTipo: Creado 14-06-2022
 //=======================================================================
 
 #endregion
@@ -40,7 +40,7 @@
 using AutoMapper;
 using ServidorAPI.Dominio.Entidades.Sadim;
 using ServidorAPI.Dominio.Excepciones;
-using ServidorAPI.Dominio.Interfaces.Logica.Base;
+using ServidorAPI.Dominio.Interfaces.Logica.Sadim;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Dominio.Interfaces.Utils;
 using ServidorAPI.Dominio.Servicios.Informacion;
@@ -49,7 +49,7 @@ using ServidorAPI.Infraestructura.Objetos.Sadim.Consulta;
 using ServidorAPI.Infraestructura.Objetos.Sadim.Editar;
 using ServidorAPI.Infraestructura.Objetos.Sadim.Insertar;
 
-namespace ServidorAPI.Logica.Base
+namespace ServidorAPI.Logica.Sadim
 {
     public class LogicaDetalle<Entidad> : ILogicaDetalle<Detalles>
     {

@@ -33,7 +33,7 @@
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
 //
-//                LogicaPeriodo: Creado 05-06-2022
+//                LogicaPeriodo: Creado 14-06-2022
 //=======================================================================
 
 #endregion
@@ -41,7 +41,7 @@
 using AutoMapper;
 using ServidorAPI.Dominio.Entidades.Sadim;
 using ServidorAPI.Dominio.Excepciones;
-using ServidorAPI.Dominio.Interfaces.Logica.Base;
+using ServidorAPI.Dominio.Interfaces.Logica.Sadim;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Dominio.Interfaces.Utils;
 using ServidorAPI.Dominio.Servicios.Informacion;
@@ -50,7 +50,7 @@ using ServidorAPI.Infraestructura.Objetos.Sadim.Consulta;
 using ServidorAPI.Infraestructura.Objetos.Sadim.Editar;
 using ServidorAPI.Infraestructura.Objetos.Sadim.Insertar;
 
-namespace ServidorAPI.Logica.Base
+namespace ServidorAPI.Logica.Sadim
 {
     public class LogicaPeriodo<Entidad> : ILogicaPeriodo<Periodos>
     {

@@ -1,0 +1,2697 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": " API Servidor-SADIM",
+    "description": "#### Interfaz de programación de aplicaciones (API RESTful)\n![Sadim](https://localhost:44337/swagger/style/logosadim.png)\n",
+    "contact": {
+      "name": "Lic. Simón Pedro Meléndez Villarreal",
+      "url": "https://www.facebook.com/simonpedromelendez",
+      "email": "aldair_1@hotmail.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://es.wikipedia.org/wiki/MIT_License"
+    },
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "Detalles",
+      "description": "Información de indicadores médicos",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Metas",
+      "description": "Objetivos de indicadores médicos",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Periodos",
+      "description": "Periodos basados en sistema SIAIS",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Procesos",
+      "description": "Procesos de salud basados MMIM",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    }
+  ],
+  "paths": {
+    "/api/detalles": {
+      "get": {
+        "tags": [ "Detalles" ],
+        "summary": "Obtener información de los indicadores médicos",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "EstadoId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Estado",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyDetalles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/detalles/{id}": {
+      "get": {
+        "tags": [ "Detalles" ],
+        "summary": "Obtener información de un indicador médico por su id",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código 200 (OK) retorna éxito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyDetalles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/detalles/{matricula}": {
+      "post": {
+        "tags": [ "Detalles" ],
+        "summary": "Insertar un nuevo detalle para un indicador médico",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se inserten registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ProcesoId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  },
+                  "DescripcionCorta": {
+                    "type": "string"
+                  },
+                  "Objetivo": {
+                    "type": "string"
+                  },
+                  "NumeradorDescripcion": {
+                    "type": "string"
+                  },
+                  "DenominadorDescripcion": {
+                    "type": "string"
+                  },
+                  "Multiplicador": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Interpretacion": {
+                    "type": "string"
+                  },
+                  "Periocidad": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "ProcesoId": {
+                  "style": "form"
+                },
+                "Nombre": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                },
+                "DescripcionCorta": {
+                  "style": "form"
+                },
+                "Objetivo": {
+                  "style": "form"
+                },
+                "NumeradorDescripcion": {
+                  "style": "form"
+                },
+                "DenominadorDescripcion": {
+                  "style": "form"
+                },
+                "Multiplicador": {
+                  "style": "form"
+                },
+                "Interpretacion": {
+                  "style": "form"
+                },
+                "Periocidad": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": " #### El código 201 (Created) retorna registro creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyDetalles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/detalles/{id},{matricula}": {
+      "put": {
+        "tags": [ "Detalles" ],
+        "summary": "Editar una detalle de indicador existente",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se editen registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ProcesoId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  },
+                  "DescripcionCorta": {
+                    "type": "string"
+                  },
+                  "Objetivo": {
+                    "type": "string"
+                  },
+                  "NumeradorDescripcion": {
+                    "type": "string"
+                  },
+                  "DenominadorDescripcion": {
+                    "type": "string"
+                  },
+                  "Multiplicador": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Interpretacion": {
+                    "type": "string"
+                  },
+                  "Periocidad": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "ProcesoId": {
+                  "style": "form"
+                },
+                "Nombre": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                },
+                "DescripcionCorta": {
+                  "style": "form"
+                },
+                "Objetivo": {
+                  "style": "form"
+                },
+                "NumeradorDescripcion": {
+                  "style": "form"
+                },
+                "DenominadorDescripcion": {
+                  "style": "form"
+                },
+                "Multiplicador": {
+                  "style": "form"
+                },
+                "Interpretacion": {
+                  "style": "form"
+                },
+                "Periocidad": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyDetalles"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Detalles" ],
+        "summary": "Eliminar un detalle de indicador",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- En caso se elimine un registro hagalo cuidadosamente ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/metas": {
+      "get": {
+        "tags": [ "Metas" ],
+        "summary": "Obtener metas de los indicadores médicos",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Indicador",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyMeta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/metas/{id}": {
+      "get": {
+        "tags": [ "Metas" ],
+        "summary": "Obtener meta de un indicador médico por su id",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código 200 (OK) retorna éxito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyMeta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/metas/{matricula}": {
+      "post": {
+        "tags": [ "Metas" ],
+        "summary": "Insertar una nueva meta para un indicador médico",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se inserten registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "DetalleIndicadorId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PeriodoId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "RendimientoEsperado": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoBajo": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoLimite": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoMedio": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "ValorReferencia": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "DetalleIndicadorId": {
+                  "style": "form"
+                },
+                "PeriodoId": {
+                  "style": "form"
+                },
+                "RendimientoEsperado": {
+                  "style": "form"
+                },
+                "RendimientoBajo": {
+                  "style": "form"
+                },
+                "RendimientoLimite": {
+                  "style": "form"
+                },
+                "RendimientoMedio": {
+                  "style": "form"
+                },
+                "ValorReferencia": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": " #### El código 201 (Created) retorna registro creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyMeta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/metas/{id},{matricula}": {
+      "put": {
+        "tags": [ "Metas" ],
+        "summary": "Editar una meta de indicador existente",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se editen registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "DetalleIndicadorId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "PeriodoId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "RendimientoEsperado": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoBajo": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoLimite": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "RendimientoMedio": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "ValorReferencia": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "DetalleIndicadorId": {
+                  "style": "form"
+                },
+                "PeriodoId": {
+                  "style": "form"
+                },
+                "RendimientoEsperado": {
+                  "style": "form"
+                },
+                "RendimientoBajo": {
+                  "style": "form"
+                },
+                "RendimientoLimite": {
+                  "style": "form"
+                },
+                "RendimientoMedio": {
+                  "style": "form"
+                },
+                "ValorReferencia": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyMeta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Metas" ],
+        "summary": "Eliminar una meta de indicador",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- En caso se elimine un registro hagalo cuidadosamente ya que de este depende la función de la base de datos",
+
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/periodos": {
+      "get": {
+        "tags": [ "Periodos" ],
+        "summary": "Obtener periodos",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyPeriodo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/periodos/{id}": {
+      "get": {
+        "tags": [ "Periodos" ],
+        "summary": "Obtener periodo por su id",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código 200 (OK) retorna éxito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyPeriodo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/periodos/{matricula}": {
+      "post": {
+        "tags": [ "Periodos" ],
+        "summary": "Insertar un nuevo periodo",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se inserten registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Año": {
+                    "type": "string"
+                  },
+                  "Mes": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Año": {
+                  "style": "form"
+                },
+                "Mes": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": " #### El código 201 (Created) retorna registro creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyPeriodo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/periodos/{id},{matricula}": {
+      "put": {
+        "tags": [ "Periodos" ],
+        "summary": "Editar un periodo existente",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se editen registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Año": {
+                    "type": "string"
+                  },
+                  "Mes": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Año": {
+                  "style": "form"
+                },
+                "Mes": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyPeriodo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Periodos" ],
+        "summary": "Eliminar un periodo",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- En caso se elimine un registro hagalo cuidadosamente ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procesos": {
+      "get": {
+        "tags": [ "Procesos" ],
+        "summary": "Obtener procesos de salud",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NombreCorto",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyProceso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procesos/{id}": {
+      "get": {
+        "tags": [ "Procesos" ],
+        "summary": "Obtener proceso de salud por su id",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf)\r\n       \r\n2.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n         \r\n3.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código 200 (OK) retorna éxito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyProceso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procesos/{matricula}": {
+      "post": {
+        "tags": [ "Procesos" ],
+        "summary": "Insertar un nuevo proceso de salud",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se inserten registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "NombreCorto": {
+                    "type": "string"
+                  },
+                  "Foto": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "NombreCorto": {
+                  "style": "form"
+                },
+                "Foto": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": " #### El código 201 (Created) retorna registro creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyProceso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/procesos/{id},{matricula}": {
+      "put": {
+        "tags": [ "Procesos" ],
+        "summary": "Editar un proceso de salud existente",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- Es importante que se editen registros con cuidado ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "type": "string"
+                  },
+                  "NombreCorto": {
+                    "type": "string"
+                  },
+                  "Foto": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "NombreCorto": {
+                  "style": "form"
+                },
+                "Foto": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyProceso"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [ "Procesos" ],
+        "summary": "Eliminar un proceso de salud",
+        "description": "`Información importante:`\r\n\r\n1.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`\r\n       \r\n2.- En caso se elimine un registro hagalo cuidadosamente ya que de este depende la función de la base de datos",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Detalles": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcionCorta": {
+            "type": "string",
+            "nullable": true
+          },
+          "objetivo": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeradorDescripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "denominadorDescripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "multiplicador": {
+            "type": "string",
+            "nullable": true
+          },
+          "interpretacion": {
+            "type": "string",
+            "nullable": true
+          },
+          "periocidad": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ProcesoId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Meta": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "detallesId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "rendimientoEsperado": {
+            "type": "number",
+            "format": "double"
+          },
+          "rendimientoBajo": {
+            "type": "number",
+            "format": "double"
+          },
+          "rendimientoLimite": {
+            "type": "number",
+            "format": "double"
+          },
+          "rendimientoMedio": {
+            "type": "number",
+            "format": "double"
+          },
+          "valorReferncia": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Periodo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodo": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "año": {
+            "type": "string",
+            "nullable": true
+          },
+          "mes": {
+            "type": "string",
+            "nullable": true
+          },
+          "mesNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Fechatermino": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Proceso": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "nombreCorto": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagen": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Metadatos": {
+        "type": "object",
+        "properties": {
+          "totalRegistros": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "registrosPagina": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paginaActual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPaginas": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "existePaginaSiguiente": {
+            "type": "boolean"
+          },
+          "existePaginaAnterior": {
+            "type": "boolean"
+          },
+          "paginaSiguiente": {
+            "type": "string",
+            "nullable": true
+          },
+          "paginaAnterior": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CodigoRespuesta": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetalleRespuesta": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resultado": {
+            "type": "boolean"
+          },
+          "encabezado": {
+            "type": "string",
+            "nullable": true
+          },
+          "detalle": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoRespuesta": {
+            "type": "string",
+            "nullable": true
+          },
+          "infromacionRegistro": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReplyDetalles": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          },
+          "datos": {
+            "$ref": "#/components/schemas/Detalles"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Metadatos"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReplyMeta": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          },
+          "datos": {
+            "$ref": "#/components/schemas/Meta"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Metadatos"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReplyPeriodo": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          },
+          "datos": {
+            "$ref": "#/components/schemas/Periodo"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Metadatos"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReplyProceso": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          },
+          "datos": {
+            "$ref": "#/components/schemas/Proceso"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Metadatos"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Token": {
+        "type": "http",
+        "description": "Inserte su token generado por: JWT (Bearer)",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "Token": []
+    }
+  ]
+}

@@ -33,7 +33,7 @@
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
 //
-//                LogicaProceso: Creado 05-06-2022
+//                LogicaProceso: Creado 14-06-2022
 //=======================================================================
 
 #endregion
@@ -41,7 +41,7 @@
 using AutoMapper;
 using ServidorAPI.Dominio.Entidades.Sadim;
 using ServidorAPI.Dominio.Excepciones;
-using ServidorAPI.Dominio.Interfaces.Logica.Base;
+using ServidorAPI.Dominio.Interfaces.Logica.Sadim;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Dominio.Interfaces.Utils;
 using ServidorAPI.Dominio.Servicios.Informacion;
@@ -51,7 +51,7 @@ using ServidorAPI.Infraestructura.Objetos.Sadim.Editar;
 using ServidorAPI.Infraestructura.Objetos.Sadim.Insertar;
 using ServidorAPI.Infraestructura.Objetos.Servidor.Respuesta;
 
-namespace ServidorAPI.Logica.Base
+namespace ServidorAPI.Logica.Sadim
 {
     public class LogicaProceso<Entidad> : ILogicaProceso<Proceso>
     {

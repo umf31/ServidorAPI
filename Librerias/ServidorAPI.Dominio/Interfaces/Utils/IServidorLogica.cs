@@ -33,7 +33,7 @@
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
 //
-//               Interface IServidorLogica: Creado 05-06-2022
+//               Interface IServidorLogica: Creado 14-06-2022
 //=======================================================================
 
 #endregion

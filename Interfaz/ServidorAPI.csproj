@@ -18,7 +18,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controladores\" />
+    <Content Remove="Recursos\swagger\SadimAPI.json" />
+    <Content Remove="Recursos\swagger\ServidorAPI.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Recursos\swagger\json\SadimAPI.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +31,21 @@
     <ProjectReference Include="..\Librerias\ServidorAPI.Infraestructura\ServidorAPI.Infraestructura.csproj" />
     <ProjectReference Include="..\Librerias\ServidorAPI.Logica\ServidorAPI.Logica.csproj" />
     <ProjectReference Include="..\Librerias\ServidorAPI.Persistencia\ServidorAPI.Persistencia.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Propiedades\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Propiedades\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>

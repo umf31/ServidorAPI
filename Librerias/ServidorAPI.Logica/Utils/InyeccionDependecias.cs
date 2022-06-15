@@ -38,8 +38,12 @@
 #endregion
 
 using Microsoft.Extensions.DependencyInjection;
+using ServidorAPI.Dominio.Interfaces.Logica.Sadim;
+using ServidorAPI.Dominio.Interfaces.Logica.Servidor;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Dominio.Interfaces.Utils;
+using ServidorAPI.Logica.Sadim;
+using ServidorAPI.Logica.Servidor;
 using ServidorAPI.Persistencia.Conectividad.Contexto;
 using ServidorAPI.Persistencia.UnidadTrabajo;
 using ServidorAPI.Persistencia.Utils;
@@ -61,7 +65,26 @@ public static class InyeccionDependecias
             .AddScoped<IAlmacenamiento, Almacenamiento>()
             .AddScoped<IUtilerias, Utilerias>()
             .AddScoped<IPagServidor, PagServidor>()
-            .AddScoped<IPagSadim, PagSadim>();
+            .AddScoped<IPagSadim, PagSadim>()
+            .AddScoped<ILogicaAutorizacion, LogicaAutorizacion>()
+            .AddScoped<ILogicaServicio, LogicaServicio>()
+            .AddScoped(typeof(IPaginacion<>), typeof(Paginacion<>))
+            .AddScoped(typeof(ILogicaStatus<>), typeof(LogicaStatus<>))
+            .AddScoped(typeof(ILogicaCategoria<>), typeof(LogicaCategoria<>))
+            .AddScoped(typeof(ILogicaPais<>), typeof(LogicaPais<>))
+            .AddScoped(typeof(ILogicaEstado<>), typeof(LogicaEstado<>))
+            .AddScoped(typeof(ILogicaMunicipio<>), typeof(LogicaMunicipio<>))
+            .AddScoped(typeof(ILogicaAsentamiento<>), typeof(LogicaAsentamiento<>))
+            .AddScoped(typeof(ILogicaColonia<>), typeof(LogicaColonia<>))
+            .AddScoped(typeof(ILogicaDelegacion<>), typeof(LogicaDelegacion<>))
+            .AddScoped(typeof(ILogicaUnidadTipo<>), typeof(LogicaUnidadTipo<>))
+            .AddScoped(typeof(ILogicaVialidad<>), typeof(LogicaVialidad<>))
+            .AddScoped(typeof(ILogicaUnidad<>), typeof(LogicaUnidad<>))
+            .AddScoped(typeof(ILogicaEmpleado<>), typeof(LogicaEmpleado<>))
+            .AddScoped(typeof(ILogicaProceso<>), typeof(LogicaProceso<>))
+            .AddScoped(typeof(ILogicaPeriodo<>), typeof(LogicaPeriodo<>))
+            .AddScoped(typeof(ILogicaDetalle<>), typeof(LogicaDetalle<>))
+            .AddScoped(typeof(ILogicaMeta<>), typeof(LogicaMeta<>));
         return services;
     }
 }

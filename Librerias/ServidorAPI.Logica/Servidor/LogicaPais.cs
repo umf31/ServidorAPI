@@ -33,7 +33,7 @@
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
 //
-//                  LogicaPais: Creado 05-06-2022
+//                  LogicaPais: Creado 14-06-2022
 //=======================================================================
 
 #endregion
@@ -41,7 +41,7 @@
 using AutoMapper;
 using ServidorAPI.Dominio.Entidades.Servidor;
 using ServidorAPI.Dominio.Excepciones;
-using ServidorAPI.Dominio.Interfaces.Logica.Base;
+using ServidorAPI.Dominio.Interfaces.Logica.Servidor;
 using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
 using ServidorAPI.Dominio.Interfaces.Utils;
 using ServidorAPI.Dominio.Servicios.Informacion;

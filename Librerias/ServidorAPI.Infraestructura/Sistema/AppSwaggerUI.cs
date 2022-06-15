@@ -38,6 +38,7 @@
 #endregion
 
 using Microsoft.AspNetCore.Builder;
+using System.Reflection;
 
 namespace ServidorAPI.Infraestructura.Sistema
 {
@@ -49,10 +50,12 @@ namespace ServidorAPI.Infraestructura.Sistema
             app.UseSwaggerUI(options =>
             {
                 //options.SwaggerEndpoint("/swagger/ServidorAPI/swagger.json", "API-Servidor");
-                //options.SwaggerEndpoint("/swagger/SADIM/swagger.json", "API-SADIM");
-                options.DefaultModelsExpandDepth(-1);
-                options.SwaggerEndpoint("/swagger/ServidorAPI.json", "API-Servidor");
-                options.SwaggerEndpoint("/swagger/SadimAPI.json", "API-SADIM");
+                //options.SwaggerEndpoint("/swagger/SADIM/swagger.json", "API-SADIM");                
+                options.DefaultModelsExpandDepth(-1);                
+                options.SwaggerEndpoint("/swagger/json/ServidorAPI.json", "API-Servidor");
+                options.SwaggerEndpoint("/swagger/json/SadimAPI.json", "API-SADIM");
+                options.InjectStylesheet("/swagger/style/swagger.css");
+                options.InjectJavascript("/swagger/style/swagger.js");
                 options.RoutePrefix = "";
             });
             return app;

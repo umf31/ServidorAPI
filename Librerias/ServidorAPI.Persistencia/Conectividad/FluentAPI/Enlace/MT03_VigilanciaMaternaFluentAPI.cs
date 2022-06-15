@@ -32,49 +32,44 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                     Periodos: Creado 13-06-2022
+//            MT03_VigilanciaMaternaFluentAPI: Creado 15-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Servidor;
-using ServidorAPI.Dominio.Servicios.Servidor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ServidorAPI.Dominio.Entidades.Enlace;
 
-namespace ServidorAPI.Dominio.Entidades.Sadim
+namespace ServidorAPI.Persistencia.Conectividad.FluentAPI.Enlace
 {
-    public class Periodos : EntidadBase
+    public class MT03_VigilanciaMaternaFluentAPI : IEntityTypeConfiguration<MT03_VigilanciaMaterna>
     {
-        public string Periodo { get; set; } = null!;
-        public string Año { get; set; } = null!;
-        public string Mes { get; set; } = null!;
-        public string MesAbrev { get; set; } = null!;
+        public void Configure(EntityTypeBuilder<MT03_VigilanciaMaterna> entity)
+        {
+            entity.HasKey(e => new { e.CvePresup, e.Periodo, e.Vez, e.Gesta, e.Concepto });
+            entity.ToTable("tbVigilanciaMaterna_UM");
 
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaTermino { get; set; }
-        public virtual Status Status { get; set; } = null!;
-        public virtual ICollection<Meta> Metas { get; set; } = null!;
-        public virtual ICollection<Dm01Unidad> Dm01Unidad { get; set; } = null!;
-        public virtual ICollection<Dm02Unidad> Dm02Unidad { get; set; } = null!;
-        public virtual ICollection<Dm04Unidad> Dm04Unidad { get; set; } = null!;
-        public virtual ICollection<Dm05Unidad> Dm05Unidad { get; set; } = null!;
-        public virtual ICollection<Eh01Unidad> Eh01Unidad { get; set; } = null!;
-        public virtual ICollection<Eh02Unidad> Eh02Unidad { get; set; } = null!;
-        public virtual ICollection<Eh04Unidad> Eh04Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
-        public virtual ICollection<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna01Unidad> Materna01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna02Unidad> Materna02Unidad { get; set; } = null!;
-        public virtual ICollection<Materna03Unidad> Materna03Unidad { get; set; } = null!;
-        public virtual ICollection<Materna04Unidad> Materna04Unidad { get; set; } = null!;
-        public virtual ICollection<SOb01Unidad> SOb01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
+            entity.Property(e => e.CvePresup).HasMaxLength(12).IsUnicode(false);
+            entity.Property(e => e.Periodo).HasMaxLength(12).IsUnicode(false);
+            entity.Property(e => e.Vez).HasMaxLength(1).IsUnicode(false);
+            entity.Property(e => e.Concepto).HasMaxLength(2).IsUnicode(false);
+            entity.Property(e => e.Gpo1014).HasColumnType("decimal(10, 2)").HasColumnName("Gpo10_14");
+            entity.Property(e => e.Gpo1014acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo10_14Acum");
+            entity.Property(e => e.Gpo1519).HasColumnType("decimal(10, 2)").HasColumnName("Gpo15_19");
+            entity.Property(e => e.Gpo1519acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo15_19Acum");
+            entity.Property(e => e.Gpo2029).HasColumnType("decimal(10, 2)").HasColumnName("Gpo20_29");
+            entity.Property(e => e.Gpo2029acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo20_29Acum");
+            entity.Property(e => e.Gpo3034).HasColumnType("decimal(10, 2)").HasColumnName("Gpo30_34");
+            entity.Property(e => e.Gpo3034acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo30_34Acum");
+            entity.Property(e => e.Gpo3539).HasColumnType("decimal(10, 2)").HasColumnName("Gpo35_39");
+            entity.Property(e => e.Gpo3539acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo35_39Acum");
+            entity.Property(e => e.Gpo40).HasColumnType("decimal(10, 2)").HasColumnName("Gpo40_");
+            entity.Property(e => e.Gpo40Acum).HasColumnType("decimal(10, 2)").HasColumnName("Gpo40_Acum");
+            entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TotalAcum).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TotalAcumulado).HasColumnType("decimal(10, 2)");
+            entity.Property(e => e.TotalPeriodo).HasColumnType("decimal(10, 2)");
+        }
     }
 }

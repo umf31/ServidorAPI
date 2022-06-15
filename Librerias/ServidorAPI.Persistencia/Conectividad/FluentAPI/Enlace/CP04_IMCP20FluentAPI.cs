@@ -32,49 +32,37 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                     Periodos: Creado 13-06-2022
+//                CP04_IMCP20FluentAPI: Creado 15-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Servidor;
-using ServidorAPI.Dominio.Servicios.Servidor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ServidorAPI.Dominio.Entidades.Enlace;
 
-namespace ServidorAPI.Dominio.Entidades.Sadim
+namespace ServidorAPI.Persistencia.Conectividad.FluentAPI.Enlace
 {
-    public class Periodos : EntidadBase
+    public class CP04_IMCP20FluentAPI : IEntityTypeConfiguration<CP04_IMCP20>
     {
-        public string Periodo { get; set; } = null!;
-        public string Año { get; set; } = null!;
-        public string Mes { get; set; } = null!;
-        public string MesAbrev { get; set; } = null!;
+        public void Configure(EntityTypeBuilder<CP04_IMCP20> builder)
+        {
+            builder.HasKey(e => new { e.CvePresup, e.Periodo, e.Consultorio, e.Turno });
+            builder.ToTable("tb_IMCP_20_SP_UM");
 
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaTermino { get; set; }
-        public virtual Status Status { get; set; } = null!;
-        public virtual ICollection<Meta> Metas { get; set; } = null!;
-        public virtual ICollection<Dm01Unidad> Dm01Unidad { get; set; } = null!;
-        public virtual ICollection<Dm02Unidad> Dm02Unidad { get; set; } = null!;
-        public virtual ICollection<Dm04Unidad> Dm04Unidad { get; set; } = null!;
-        public virtual ICollection<Dm05Unidad> Dm05Unidad { get; set; } = null!;
-        public virtual ICollection<Eh01Unidad> Eh01Unidad { get; set; } = null!;
-        public virtual ICollection<Eh02Unidad> Eh02Unidad { get; set; } = null!;
-        public virtual ICollection<Eh04Unidad> Eh04Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
-        public virtual ICollection<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna01Unidad> Materna01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna02Unidad> Materna02Unidad { get; set; } = null!;
-        public virtual ICollection<Materna03Unidad> Materna03Unidad { get; set; } = null!;
-        public virtual ICollection<Materna04Unidad> Materna04Unidad { get; set; } = null!;
-        public virtual ICollection<SOb01Unidad> SOb01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
+            builder.Property(e => e.CvePresup).HasMaxLength(12).IsUnicode(false);
+            builder.Property(e => e.Periodo).HasMaxLength(6).IsUnicode(false);
+            builder.Property(e => e.Consultorio).HasMaxLength(4).IsUnicode(false);
+            builder.Property(e => e.DetDiabetes20).HasColumnName("Det_Diabetes_20_");
+            builder.Property(e => e.DetHipertension20).HasColumnName("Det_Hipertension_20_");
+            builder.Property(e => e.DiabetesMes20).HasColumnName("Diabetes_Mes_20_");
+            builder.Property(e => e.DiabetesMesSospecha20).HasColumnName("Diabetes_Mes_Sospecha_20_");
+            builder.Property(e => e.DmSospechaConfirmados20).HasColumnName("DM_Sospecha_Confirmados_20_");
+            builder.Property(e => e.HipertensionMes20).HasColumnName("Hipertension_Mes_20_");
+            builder.Property(e => e.HipertensionMesSospecha20).HasColumnName("Hipertension_Mes_Sospecha_20_");
+            builder.Property(e => e.HtaSospechaConfirmados20).HasColumnName("HTA_Sospecha_Confirmados_20_");
+            builder.Property(e => e.IndCfmDm20).HasColumnType("decimal(10, 2)").HasColumnName("IndCfm_DM_20_");
+            builder.Property(e => e.IndCfmHta20).HasColumnType("decimal(10, 2)").HasColumnName("IndCfm_HTA_20_");
+        }
     }
 }

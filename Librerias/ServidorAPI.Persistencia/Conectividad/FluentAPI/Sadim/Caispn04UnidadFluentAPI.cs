@@ -32,49 +32,47 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                     Periodos: Creado 13-06-2022
+//              Caispn04UnidadFluentAPI: Creado 15-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Servidor;
-using ServidorAPI.Dominio.Servicios.Servidor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ServidorAPI.Dominio.Entidades.Sadim;
 
-namespace ServidorAPI.Dominio.Entidades.Sadim
+namespace ServidorAPI.Persistencia.Conectividad.FluentAPI.Sadim
 {
-    public class Periodos : EntidadBase
+    public class Caispn04UnidadFluentAPI : IEntityTypeConfiguration<Caispn04Unidad>
     {
-        public string Periodo { get; set; } = null!;
-        public string Año { get; set; } = null!;
-        public string Mes { get; set; } = null!;
-        public string MesAbrev { get; set; } = null!;
+        public void Configure(EntityTypeBuilder<Caispn04Unidad> builder)
+        {
+            builder.ToTable("Caispn04Unidad", "sadim");
+            builder.HasIndex(e => e.StatusId, "IX_Caispn04Unidad_StatusId");
+            builder.HasIndex(e => e.PeriodoId, "IX_Caispn04Unidad_PeriodoId");
+            builder.HasOne(d => d.Periodos).WithMany(p => p.Caispn04Unidad).HasForeignKey(d => d.PeriodoId);
+            builder.HasOne(d => d.Status).WithMany(p => p.Caispn04Unidad).OnDelete(DeleteBehavior.ClientSetNull).HasForeignKey(d => d.StatusId);
 
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaTermino { get; set; }
-        public virtual Status Status { get; set; } = null!;
-        public virtual ICollection<Meta> Metas { get; set; } = null!;
-        public virtual ICollection<Dm01Unidad> Dm01Unidad { get; set; } = null!;
-        public virtual ICollection<Dm02Unidad> Dm02Unidad { get; set; } = null!;
-        public virtual ICollection<Dm04Unidad> Dm04Unidad { get; set; } = null!;
-        public virtual ICollection<Dm05Unidad> Dm05Unidad { get; set; } = null!;
-        public virtual ICollection<Eh01Unidad> Eh01Unidad { get; set; } = null!;
-        public virtual ICollection<Eh02Unidad> Eh02Unidad { get; set; } = null!;
-        public virtual ICollection<Eh04Unidad> Eh04Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
-        public virtual ICollection<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna01Unidad> Materna01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna02Unidad> Materna02Unidad { get; set; } = null!;
-        public virtual ICollection<Materna03Unidad> Materna03Unidad { get; set; } = null!;
-        public virtual ICollection<Materna04Unidad> Materna04Unidad { get; set; } = null!;
-        public virtual ICollection<SOb01Unidad> SOb01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
+            builder.Property(e => e.Id).HasColumnOrder(0);
+            builder.Property(e => e.PeriodoId).HasColumnOrder(1).IsRequired();
+            builder.Property(e => e.Periodo).HasColumnOrder(2).IsRequired().HasMaxLength(6).IsUnicode(false);
+            builder.Property(e => e.ClavePresupuestal).HasColumnOrder(3).IsRequired().HasMaxLength(12).IsUnicode(false);
+            builder.Property(e => e.Nombre).HasColumnOrder(4).IsRequired().IsUnicode(false);
+            builder.Property(e => e.FechaInicio).HasColumnOrder(5).HasColumnType("datetime");
+            builder.Property(e => e.FechaTermino).HasColumnOrder(6).HasColumnType("datetime");
+            builder.Property(e => e.FechaCorte).HasColumnOrder(7).HasColumnType("datetime");
+            builder.Property(e => e.Numerador).HasColumnOrder(10).HasColumnType("decimal(12, 0)");
+            builder.Property(e => e.Denominador).HasColumnOrder(11).HasColumnType("decimal(12, 0)");
+            builder.Property(e => e.Multiplicador).HasColumnOrder(12).IsRequired();
+            builder.Property(e => e.ValorReferencia).HasColumnOrder(13).HasColumnType("decimal(12, 2)");
+            builder.Property(e => e.Total).HasColumnOrder(14).HasColumnType("decimal(12, 2)");
+            builder.Property(e => e.Meta).HasColumnOrder(15).HasColumnType("decimal(12, 0)");
+            builder.Property(e => e.DiferenciaMeta).HasColumnOrder(16).HasColumnType("decimal(12, 0)");
+            builder.Property(e => e.Rendimiento).HasColumnOrder(17).IsRequired().IsUnicode(false);
+            builder.Property(e => e.FechaCreacion).HasColumnOrder(18).HasColumnType("datetime");
+            builder.Property(e => e.FechaModificacion).HasColumnOrder(19).HasColumnType("datetime");
+            builder.Property(e => e.UsuarioMod).HasColumnOrder(20).IsUnicode(false);
+            builder.Property(e => e.StatusId).HasColumnOrder(21).IsRequired();
+        }
     }
 }

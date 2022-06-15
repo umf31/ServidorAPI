@@ -82,6 +82,29 @@ namespace ServidorAPI.Persistencia.Conectividad.Contexto
         public DbSet<Periodos> Periodos { get; set; } = null!;
         public DbSet<Detalles> Detalles { get; set; } = null!;
         public DbSet<Meta> Metas { get; set; } = null!;
+        public DbSet<Dm01Unidad> Dm01Unidad { get; set; } = null!;
+        public DbSet<Dm02Unidad> Dm02Unidad { get; set; } = null!;
+        public DbSet<Dm04Unidad> Dm04Unidad { get; set; } = null!;
+        public DbSet<Dm05Unidad> Dm05Unidad { get; set; } = null!;
+        public DbSet<Eh01Unidad> Eh01Unidad { get; set; } = null!;
+        public DbSet<Eh02Unidad> Eh02Unidad { get; set; } = null!;
+        public DbSet<Eh04Unidad> Eh04Unidad { get; set; } = null!;
+        public DbSet<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
+        public DbSet<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
+        public DbSet<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
+        public DbSet<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
+        public DbSet<Materna01Unidad> Materna01Unidad { get; set; } = null!;
+        public DbSet<Materna02Unidad> Materna02Unidad { get; set; } = null!;
+        public DbSet<Materna03Unidad> Materna03Unidad { get; set; } = null!;
+        public DbSet<Materna04Unidad> Materna04Unidad { get; set; } = null!;
+        public DbSet<SOb01Unidad> SOb01Unidad { get; set; } = null!;
+        public DbSet<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
+        public DbSet<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
+        public DbSet<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
+        public DbSet<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
+        public DbSet<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
+        public DbSet<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
+        public DbSet<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
 
         #endregion
 
@@ -128,6 +151,29 @@ namespace ServidorAPI.Persistencia.Conectividad.Contexto
             modelBuilder.ApplyConfiguration(new ProcesoFluentAPI());
             modelBuilder.ApplyConfiguration(new PeriodoFluentAPI());
             modelBuilder.ApplyConfiguration(new MetaFluentAPI());
+            modelBuilder.ApplyConfiguration(new Dm01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Dm02UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Dm04UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Dm05UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Eh01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Eh02UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Eh04UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new CaMama01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new CaMama02UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new CaMama03UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new CaCu01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Materna01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Materna02UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Materna03UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Materna04UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new SOb01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn01UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn02UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn04UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn05UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn08UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn09UnidadFluentAPI());
+            modelBuilder.ApplyConfiguration(new Caispn14UnidadFluentAPI());
 
             #endregion
         }

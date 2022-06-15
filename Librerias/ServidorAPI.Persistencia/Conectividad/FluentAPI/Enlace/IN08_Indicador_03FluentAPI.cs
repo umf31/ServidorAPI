@@ -32,49 +32,42 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                     Periodos: Creado 13-06-2022
+//            IN08_Indicador_03FluentAPI: Creado 15-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Servidor;
-using ServidorAPI.Dominio.Servicios.Servidor;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ServidorAPI.Dominio.Entidades.Enlace;
 
-namespace ServidorAPI.Dominio.Entidades.Sadim
+namespace ServidorAPI.Persistencia.Conectividad.FluentAPI.Enlace
 {
-    public class Periodos : EntidadBase
+    public class IN08_Indicador_03FluentAPI : IEntityTypeConfiguration<IN08_Indicador_03>
     {
-        public string Periodo { get; set; } = null!;
-        public string Año { get; set; } = null!;
-        public string Mes { get; set; } = null!;
-        public string MesAbrev { get; set; } = null!;
+        public void Configure(EntityTypeBuilder<IN08_Indicador_03> entity)
+        {
+            entity.HasNoKey();
+            entity.ToTable("tb_Indicador_03_AtnMedica_UM");
+            entity.HasIndex(e => new { e.PeriodoInicial, e.PeriodoFinal, e.Orden, e.Delegacion, e.CvePresup, e.Consultorio, e.Turno }, "IX_tb_Indicador_03_AtnMedica_UM_Indice1");
+            entity.HasIndex(e => new { e.PeriodoInicial, e.PeriodoFinal, e.Delegacion, e.CvePresup }, "IX_tb_Indicador_03_AtnMedica_UM_Indice2");
 
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaTermino { get; set; }
-        public virtual Status Status { get; set; } = null!;
-        public virtual ICollection<Meta> Metas { get; set; } = null!;
-        public virtual ICollection<Dm01Unidad> Dm01Unidad { get; set; } = null!;
-        public virtual ICollection<Dm02Unidad> Dm02Unidad { get; set; } = null!;
-        public virtual ICollection<Dm04Unidad> Dm04Unidad { get; set; } = null!;
-        public virtual ICollection<Dm05Unidad> Dm05Unidad { get; set; } = null!;
-        public virtual ICollection<Eh01Unidad> Eh01Unidad { get; set; } = null!;
-        public virtual ICollection<Eh02Unidad> Eh02Unidad { get; set; } = null!;
-        public virtual ICollection<Eh04Unidad> Eh04Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama01Unidad> CaMama01Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama02Unidad> CaMama02Unidad { get; set; } = null!;
-        public virtual ICollection<CaMama03Unidad> CaMama03Unidad { get; set; } = null!;
-        public virtual ICollection<CaCu01Unidad> CaCu01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna01Unidad> Materna01Unidad { get; set; } = null!;
-        public virtual ICollection<Materna02Unidad> Materna02Unidad { get; set; } = null!;
-        public virtual ICollection<Materna03Unidad> Materna03Unidad { get; set; } = null!;
-        public virtual ICollection<Materna04Unidad> Materna04Unidad { get; set; } = null!;
-        public virtual ICollection<SOb01Unidad> SOb01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn01Unidad> Caispn01Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn02Unidad> Caispn02Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn04Unidad> Caispn04Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn05Unidad> Caispn05Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn08Unidad> Caispn08Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn09Unidad> Caispn09Unidad { get; set; } = null!;
-        public virtual ICollection<Caispn14Unidad> Caispn14Unidad { get; set; } = null!;
+            entity.Property(e => e.CategoriaUnidad).HasMaxLength(1).IsUnicode(false).HasColumnName("Categoria_Unidad");
+            entity.Property(e => e.Consultorio).HasMaxLength(4).IsUnicode(false);
+            entity.Property(e => e.CvePresup).HasMaxLength(12).IsUnicode(false);
+            entity.Property(e => e.Delegacion).HasMaxLength(2).IsUnicode(false);
+            entity.Property(e => e.DescripcionTotal).HasMaxLength(145).IsUnicode(false).HasColumnName("Descripcion_Total");
+            entity.Property(e => e.FechaFinal).HasColumnType("datetime").HasColumnName("Fecha_Final");
+            entity.Property(e => e.FechaInicial).HasColumnType("datetime").HasColumnName("Fecha_Inicial");
+            entity.Property(e => e.Matricula).HasMaxLength(12).IsUnicode(false);
+            entity.Property(e => e.PeriodoFinal).HasMaxLength(6).IsUnicode(false).HasColumnName("Periodo_Final");
+            entity.Property(e => e.PeriodoInicial).HasMaxLength(6).IsUnicode(false).HasColumnName("Periodo_Inicial");
+            entity.Property(e => e.PorcentDhPases).HasColumnType("decimal(10, 2)").HasColumnName("Porcent_DH_Pases");
+            entity.Property(e => e.PorcentDhReferidos).HasColumnType("decimal(10, 2)").HasColumnName("Porcent_DH_Referidos");
+            entity.Property(e => e.PorcentTotalConsultas).HasColumnType("decimal(10, 2)").HasColumnName("Porcent_Total_Consultas");
+            entity.Property(e => e.TotalConsultas).HasColumnName("Total_Consultas");
+            entity.Property(e => e.TotalDhReferidos).HasColumnName("Total_DH_Referidos");
+            entity.Property(e => e.TotalPasesDh).HasColumnName("Total_Pases_DH");
+        }
     }
 }

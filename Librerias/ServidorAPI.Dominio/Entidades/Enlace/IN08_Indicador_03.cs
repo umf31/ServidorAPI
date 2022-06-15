@@ -32,29 +32,32 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                   Detalles: Creado 13-06-2022
+//                  IN08_Indicador_03: Creado 15-06-2022
 //=======================================================================
 
 #endregion
 
-using ServidorAPI.Dominio.Entidades.Servidor;
-using ServidorAPI.Dominio.Servicios.Servidor;
-
-namespace ServidorAPI.Dominio.Entidades.Sadim
+namespace ServidorAPI.Dominio.Entidades.Enlace
 {
-    public class Detalles : EntidadBase
+    public partial class IN08_Indicador_03
     {
-        public string Descripcion { get; set; } = null!;
-        public string DescripcionCorta { get; set; } = null!;
-        public string Objetivo { get; set; } = null!;
-        public string NumeradorDescripcion { get; set; } = null!;
-        public string DenominadorDescripcion { get; set; } = null!;
-        public int Multiplicador { get; set; }
-        public string Interpretacion { get; set; } = null!;
-        public string Periocidad { get; set; } = null!;
-        public int ProcesoId { get; set; }
-        public virtual Status Status { get; set; } = null!;
-        public virtual Proceso Proceso { get; set; } = null!;
-        public virtual ICollection<Meta> Metas { get; set; } = null!;
+        public string? DescripcionTotal { get; set; }
+        public int? TotalConsultas { get; set; }
+        public decimal? PorcentTotalConsultas { get; set; }
+        public int? TotalDhReferidos { get; set; }
+        public decimal? PorcentDhReferidos { get; set; }
+        public int Orden { get; set; }
+        public string Delegacion { get; set; } = null!;
+        public string CvePresup { get; set; } = null!;
+        public string CategoriaUnidad { get; set; } = null!;
+        public string Consultorio { get; set; } = null!;
+        public int Turno { get; set; }
+        public string PeriodoInicial { get; set; } = null!;
+        public string PeriodoFinal { get; set; } = null!;
+        public DateTime FechaInicial { get; set; }
+        public DateTime FechaFinal { get; set; }
+        public string? Matricula { get; set; }
+        public int? TotalPasesDh { get; set; }
+        public decimal? PorcentDhPases { get; set; }
     }
 }

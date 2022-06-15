@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": " API Servidor-SADIM",
+    "title": " API-SADIM",
     "description": "#### Interfaz de programación de aplicaciones (API RESTful)\n![Sadim](https://localhost:44337/swagger/style/logosadim.png)\n",
     "contact": {
       "name": "Lic. Simón Pedro Meléndez Villarreal",

@@ -32,43 +32,41 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                   IPaginacionSadim: Creado 13-06-2022
+//                  ICrearIndicador: Creado 16-06-2022
 //=======================================================================
 
 #endregion
+
 
 using ServidorAPI.Dominio.Entidades.Sadim;
 
 namespace ServidorAPI.Dominio.Interfaces.Utils
 {
-    public interface IPagSadim
+    public interface ICrearIndicador
     {
-        IPaginacion<Detalles> Detalles { get; }
-        IPaginacion<Meta> Meta { get; }
-        IPaginacion<Periodos> Periodo { get; }
-        IPaginacion<Proceso> Proceso { get; }
-        IPaginacion<Dm01Unidad> Dm01Unidad { get; }
-        IPaginacion<Dm02Unidad> Dm02Unidad { get; }
-        IPaginacion<Dm04Unidad> Dm04Unidad { get; }
-        IPaginacion<Dm05Unidad> Dm05Unidad { get; }
-        IPaginacion<Eh01Unidad> Eh01Unidad { get; }
-        IPaginacion<Eh02Unidad> Eh02Unidad { get; }
-        IPaginacion<Eh04Unidad> Eh04Unidad { get; }
-        IPaginacion<CaMama01Unidad> CaMama01Unidad { get; }
-        IPaginacion<CaMama02Unidad> CaMama02Unidad { get; }
-        IPaginacion<CaMama03Unidad> CaMama03Unidad { get; }
-        IPaginacion<CaCu01Unidad> CaCu01Unidad { get; }
-        IPaginacion<Materna01Unidad> Materna01Unidad { get; }
-        IPaginacion<Materna02Unidad> Materna02Unidad { get; }
-        IPaginacion<Materna03Unidad> Materna03Unidad { get; }
-        IPaginacion<Materna04Unidad> Materna04Unidad { get; }
-        IPaginacion<SOb01Unidad> SOb01Unidad { get; }
-        IPaginacion<Caispn01Unidad> Caispn01Unidad { get; }
-        IPaginacion<Caispn02Unidad> Caispn02Unidad { get; }
-        IPaginacion<Caispn04Unidad> Caispn04Unidad { get; }
-        IPaginacion<Caispn05Unidad> Caispn05Unidad { get; }
-        IPaginacion<Caispn08Unidad> Caispn08Unidad { get; }
-        IPaginacion<Caispn09Unidad> Caispn09Unidad { get; }
-        IPaginacion<Caispn14Unidad> Caispn14Unidad { get; }
+        Task<List<Dm01Unidad>> CrearDM01(List<Dm01Unidad> indicador, string matricula);
+        Task<List<Dm02Unidad>> CrearDM02(List<Dm02Unidad> indicador, string matricula);
+        Task<List<Dm04Unidad>> CrearDM04(List<Dm04Unidad> indicador, string matricula);
+        Task<List<Dm05Unidad>> CrearDM05(List<Dm05Unidad> indicador, string matricula);
+        Task<List<Eh01Unidad>> CrearEH01(List<Eh01Unidad> indicador, string matricula);
+        Task<List<Eh02Unidad>> CrearEH02(List<Eh02Unidad> indicador, string matricula);
+        Task<List<Eh04Unidad>> CrearEH04(List<Eh04Unidad> indicador, string matricula);
+        Task<List<CaMama01Unidad>> CrearCAMA01(List<CaMama01Unidad> indicador, string matricula);
+        Task<List<CaMama02Unidad>> CrearCAMA02(List<CaMama02Unidad> indicador, string matricula);
+        Task<List<CaMama03Unidad>> CrearCAMA03(List<CaMama03Unidad> indicador, string matricula);
+        Task<List<CaCu01Unidad>> CrearCACU01(List<CaCu01Unidad> indicador, string matricula);
+        Task<List<Materna01Unidad>> CrearMaterna01(List<Materna01Unidad> indicador, string matricula);
+        Task<List<Materna02Unidad>> CrearMaterna02(List<Materna02Unidad> indicador, string matricula);
+        Task<List<Materna03Unidad>> CrearMaterna03(List<Materna03Unidad> indicador, string matricula);
+        Task<List<Materna04Unidad>> CrearMaterna04(List<Materna04Unidad> indicador, string matricula);
+        Task<List<SOb01Unidad>> CrearSOb01(List<SOb01Unidad> indicador, string matricula);
+        Task<List<Caispn01Unidad>> CrearCAISPN01(List<Caispn01Unidad> indicador, string matricula);
+        Task<List<Caispn02Unidad>> CrearCAISPN02(List<Caispn02Unidad> indicador, string matricula);
+        Task<List<Caispn04Unidad>> CrearCAISPN04(List<Caispn04Unidad> indicador, string matricula);
+        Task<List<Caispn05Unidad>> CrearCAISPN05(List<Caispn05Unidad> indicador, string matricula);
+        Task<List<Caispn08Unidad>> CrearCAISPN08(List<Caispn08Unidad> indicador, string matricula);
+        Task<List<Caispn09Unidad>> CrearCAISPN09(List<Caispn09Unidad> indicador, string matricula);
+        Task<List<Caispn14Unidad>> CrearCAISPN14(List<Caispn14Unidad> indicador, string matricula);
+
     }
 }

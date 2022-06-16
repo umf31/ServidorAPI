@@ -32,43 +32,46 @@
 // © TODOS LOS DERECHOS RESERVADOS 2021 REVELADO DE INVENCION R1-123-2020
 //            Información y actualizaciones del proyecto en
 //                https://github.com/umf31/ServidorAPI
-//                   IPaginacionSadim: Creado 13-06-2022
+//                 IDiabetesUnidad: Creado 16-06-2022
 //=======================================================================
 
 #endregion
 
+using AutoMapper;
 using ServidorAPI.Dominio.Entidades.Sadim;
+using ServidorAPI.Dominio.Interfaces.Logica.Sadim;
+using ServidorAPI.Dominio.Interfaces.UnidadTrabajo;
+using ServidorAPI.Dominio.Interfaces.Utils;
 
-namespace ServidorAPI.Dominio.Interfaces.Utils
+namespace ServidorAPI.Logica.Sadim
 {
-    public interface IPagSadim
+    public class LogicaCaispn : ILogicaCaispn
     {
-        IPaginacion<Detalles> Detalles { get; }
-        IPaginacion<Meta> Meta { get; }
-        IPaginacion<Periodos> Periodo { get; }
-        IPaginacion<Proceso> Proceso { get; }
-        IPaginacion<Dm01Unidad> Dm01Unidad { get; }
-        IPaginacion<Dm02Unidad> Dm02Unidad { get; }
-        IPaginacion<Dm04Unidad> Dm04Unidad { get; }
-        IPaginacion<Dm05Unidad> Dm05Unidad { get; }
-        IPaginacion<Eh01Unidad> Eh01Unidad { get; }
-        IPaginacion<Eh02Unidad> Eh02Unidad { get; }
-        IPaginacion<Eh04Unidad> Eh04Unidad { get; }
-        IPaginacion<CaMama01Unidad> CaMama01Unidad { get; }
-        IPaginacion<CaMama02Unidad> CaMama02Unidad { get; }
-        IPaginacion<CaMama03Unidad> CaMama03Unidad { get; }
-        IPaginacion<CaCu01Unidad> CaCu01Unidad { get; }
-        IPaginacion<Materna01Unidad> Materna01Unidad { get; }
-        IPaginacion<Materna02Unidad> Materna02Unidad { get; }
-        IPaginacion<Materna03Unidad> Materna03Unidad { get; }
-        IPaginacion<Materna04Unidad> Materna04Unidad { get; }
-        IPaginacion<SOb01Unidad> SOb01Unidad { get; }
-        IPaginacion<Caispn01Unidad> Caispn01Unidad { get; }
-        IPaginacion<Caispn02Unidad> Caispn02Unidad { get; }
-        IPaginacion<Caispn04Unidad> Caispn04Unidad { get; }
-        IPaginacion<Caispn05Unidad> Caispn05Unidad { get; }
-        IPaginacion<Caispn08Unidad> Caispn08Unidad { get; }
-        IPaginacion<Caispn09Unidad> Caispn09Unidad { get; }
-        IPaginacion<Caispn14Unidad> Caispn14Unidad { get; }
+        internal readonly ILogicaCaispn01Unidad<Caispn01Unidad> logicaCaispn01Unidad = null!;
+        internal readonly ILogicaCaispn02Unidad<Caispn02Unidad> logicaCaispn02Unidad = null!;
+        internal readonly ILogicaCaispn04Unidad<Caispn04Unidad> logicaCaispn04Unidad = null!;
+        internal readonly ILogicaCaispn05Unidad<Caispn05Unidad> logicaCaispn05Unidad = null!;
+        internal readonly ILogicaCaispn08Unidad<Caispn08Unidad> logicaCaispn08Unidad = null!;
+        internal readonly ILogicaCaispn09Unidad<Caispn09Unidad> logicaCaispn09Unidad = null!;
+        internal readonly ILogicaCaispn14Unidad<Caispn14Unidad> logicaCaispn14Unidad = null!;
+        private readonly IMapper mapper;
+        private readonly ISadimUT uts;
+        private readonly IPagSadim lista;
+        private readonly ICrearIndicador crear;
+        public LogicaCaispn(IMapper _mapper, ISadimUT _uts, IPagSadim _lista, ICrearIndicador _crear)
+        {
+            mapper = _mapper;
+            uts = _uts;
+            lista = _lista;
+            crear = _crear;
+        }
+
+        public ILogicaCaispn01Unidad<Caispn01Unidad> LogicaCaispn01Unidad => logicaCaispn01Unidad ?? new LogicaCaispn01Unidad<Caispn01Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn02Unidad<Caispn02Unidad> LogicaCaispn02Unidad => logicaCaispn02Unidad ?? new LogicaCaispn02Unidad<Caispn02Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn04Unidad<Caispn04Unidad> LogicaCaispn04Unidad => logicaCaispn04Unidad ?? new LogicaCaispn04Unidad<Caispn04Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn05Unidad<Caispn05Unidad> LogicaCaispn05Unidad => logicaCaispn05Unidad ?? new LogicaCaispn05Unidad<Caispn05Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn08Unidad<Caispn08Unidad> LogicaCaispn08Unidad => logicaCaispn08Unidad ?? new LogicaCaispn08Unidad<Caispn08Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn09Unidad<Caispn09Unidad> LogicaCaispn09Unidad => logicaCaispn09Unidad ?? new LogicaCaispn09Unidad<Caispn09Unidad>(mapper, uts, lista, crear);
+        public ILogicaCaispn14Unidad<Caispn14Unidad> LogicaCaispn14Unidad => logicaCaispn14Unidad ?? new LogicaCaispn14Unidad<Caispn14Unidad>(mapper, uts, lista, crear);
     }
 }

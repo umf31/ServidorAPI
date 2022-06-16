@@ -3,14 +3,26 @@
 .swagger-ui html {
   box-sizing: border-box
 }
-
-.swagger-ui *, .swagger-ui :after, .swagger-ui :before {
+.swagger-ui .renderedMarkdown code {
+    background: rgba(0,0,0,.05);
+    border-radius: 4px;
+    color: #07170f;
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 5px 7px
+}
+    .swagger-ui *, .swagger-ui :after, .swagger-ui :before {
   box-sizing: inherit
+}
+.swagger-ui a.nostyle{
+    display: inline;
+    margin-bottom: 5px;
 }
 
 .swagger-ui body {
-  margin: 0;
-  background: #fafafa
+    margin: 0;
+    background: #fafafa
 }
 
 .swagger-ui .wrapper {
@@ -72,7 +84,7 @@
   padding: 0 10px;
   -webkit-box-flex: 1;
   -ms-flex: 1;
-  flex: 1;
+  flex: 2;
   font-family: Open Sans, sans-serif;
   color: #3b4151
 }

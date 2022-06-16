@@ -46,6 +46,62 @@
         "description": "Mas información  ",
         "url": "https://github.com/umf31/ServidorAPI"
       }
+    },
+    {
+      "name": "Diabetes",
+      "description": "Indicadores del proceso de salud `Atención integral de la diabetes mellitus `",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Hipertension",
+      "description": "Indicadores del proceso de salud `Atención integral de las enfermedades hípertensivas`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "CancerMama",
+      "description": "Indicadores del proceso de salud `Atención integral del cáncer de mama en la mujer`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "CervicoUterino",
+      "description": "Indicadores del proceso de salud `Atención integral del cáncer cérvico uterino`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Materna",
+      "description": "Indicadores del proceso de salud `Atención materna integral`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Obesidad",
+      "description": "Indicadores del proceso de salud `Atención integral del sobrepeso y obesidad`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
+    },
+    {
+      "name": "Caispn",
+      "description": "Indicadores de desempeño de las `Coordinaciones Normativas`",
+      "externalDocs": {
+        "description": "Mas información  ",
+        "url": "https://github.com/umf31/ServidorAPI"
+      }
     }
   ],
   "paths": {
@@ -2390,6 +2446,5274 @@
           }
         }
       }
+    },
+    "/api/sadim/diabetes/dm01": {
+      "get": {
+        "tags": [ "Diabetes" ],
+        "summary": "Cobertura de detección de primera vez de Diabetes mellitus",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 y CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=75)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/actualizarDm01/{matricula}": {
+      "post": {
+        "tags": [ "Diabetes" ],
+        "summary": "Actualizar información del indicador DM01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 y CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=75)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/dm02": {
+      "get": {
+        "tags": [ "Diabetes" ],
+        "summary": "Índice de confirmación de pacientes sospechosos de Diabetes mellitus",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP04 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=78)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/actualizarDm02/{matricula}": {
+      "post": {
+        "tags": [ "Diabetes" ],
+        "summary": "Actualizar información del indicador DM02",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP04 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=78)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/dm04": {
+      "get": {
+        "tags": [ "Diabetes" ],
+        "summary": "Porcentaje de pacientes con Diabetes mellitus en control adecuado de glucemia",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN23 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=82)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/actualizarDm04/{matricula}": {
+      "post": {
+        "tags": [ "Diabetes" ],
+        "summary": "Actualizar información del indicador DM04",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN23 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=82)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/dm05": {
+      "get": {
+        "tags": [ "Diabetes" ],
+        "summary": "Porcentaje de pacientes diabéticos con cifras de tensión arterial en control",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN23 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=84)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/diabetes/actualizarDm05/{matricula}": {
+      "post": {
+        "tags": [ "Diabetes" ],
+        "summary": "Actualizar información del indicador DM05",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN23 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=84)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/eh01": {
+      "get": {
+        "tags": [ "Hipertension" ],
+        "summary": "Cobertura de detección de Hipertensión Arterial",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 y CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=101)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/actualizarEh01/{matricula}": {
+      "post": {
+        "tags": [ "Hipertension" ],
+        "summary": "Actualizar información del indicador EH01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 y CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=101)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/eh02": {
+      "get": {
+        "tags": [ "Hipertension" ],
+        "summary": "Índice de confirmación de casos sospechosos de Hipertensión Arterial ",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP04 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=104)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/actualizarEh02/{matricula}": {
+      "post": {
+        "tags": [ "Hipertension" ],
+        "summary": "Actualizar información del indicador EH02",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP04 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=104)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/eh04": {
+      "get": {
+        "tags": [ "Hipertension" ],
+        "summary": "Porcentaje de pacientes en control de Hipertensión Arterial ",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN22 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=108)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/hipertension/actualizarEh04/{matricula}": {
+      "post": {
+        "tags": [ "Hipertension" ],
+        "summary": "Actualizar información del indicador EH04",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN22 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=108)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/caMama01": {
+      "get": {
+        "tags": [ "CancerMama" ],
+        "summary": "Cobertura de mastografía de primera vez en mujeres entre 40 y 49 años",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=123)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/actualizarCAMama01/{matricula}": {
+      "post": {
+        "tags": [ "CancerMama" ],
+        "summary": "Actualizar información del indicador CAMama01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=123)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/caMama02": {
+      "get": {
+        "tags": [ "CancerMama" ],
+        "summary": "Cobertura de mastografía de primera vez en mujeres entre SO y 69 años",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=126)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/actualizarCAMama02/{matricula}": {
+      "post": {
+        "tags": [ "CancerMama" ],
+        "summary": "Actualizar información del indicador CAMama02",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=126)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/caMama03": {
+      "get": {
+        "tags": [ "CancerMama" ],
+        "summary": "Porcentaje de mujeres entre 50 y 69 años con clasificación BIRADS 3 a 5",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=129)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cancerMama/actualizarCAMama03/{matricula}": {
+      "post": {
+        "tags": [ "CancerMama" ],
+        "summary": "Actualizar información del indicador CAMama03",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=129)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cervicoUterino/cacu01": {
+      "get": {
+        "tags": [ "CervicoUterino" ],
+        "summary": "Cobertura de primera vez de Cáncer Cérvico Uterino",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=123)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/cervicoUterino/actualizarCaCu01/{matricula}": {
+      "post": {
+        "tags": [ "CervicoUterino" ],
+        "summary": "Actualizar información del indicador CaCu01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=149)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/materna01": {
+      "get": {
+        "tags": [ "Materna" ],
+        "summary": "Proporción de adolescentes embarazadas",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=175)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/actualizarMaterna01/{matricula}": {
+      "post": {
+        "tags": [ "Materna" ],
+        "summary": "Actualizar información del indicador Materna01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=175)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/materna02": {
+      "get": {
+        "tags": [ "Materna" ],
+        "summary": "Oportunidad de inicio de la Vigilancia Prenatal",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=177)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/actualizarMaterna02/{matricula}": {
+      "post": {
+        "tags": [ "Materna" ],
+        "summary": "Actualizar información del indicador Materna02",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=177)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/materna03": {
+      "get": {
+        "tags": [ "Materna" ],
+        "summary": "Promedio de atenciones prenatales por embarazada",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=179)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/actualizarMaterna03/{matricula}": {
+      "post": {
+        "tags": [ "Materna" ],
+        "summary": "Actualizar información del indicador Materna03",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT03 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=179)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/materna04": {
+      "get": {
+        "tags": [ "Materna" ],
+        "summary": "Proporción de Infección Genitourinaria en embarazadas",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT01 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=181)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/materna/actualizarMaterna04/{matricula}": {
+      "post": {
+        "tags": [ "Materna" ],
+        "summary": "Actualizar información del indicador Materna04",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS MT01 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=181)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/obesidad/sob01": {
+      "get": {
+        "tags": [ "Obesidad" ],
+        "summary": "Cobertura de medición de peso y talla",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=227)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/obesidad/actualizarSOb01/{matricula}": {
+      "post": {
+        "tags": [ "Obesidad" ],
+        "summary": "Actualizar información del indicador SOb01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP02 \r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=227)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn01": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Cobertura de chequeo PrevenlMSS",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CIP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=243)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn01/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn01",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CIP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=243)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn02": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Productividad de chequeo PrevenlMSS por personal de enfermería",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IAP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=246)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn02/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn02",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IAP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=246)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn04": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Cobertura con esquemas completos de vacunación en niños de un año",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=249)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn04/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn04",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS CP03\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=249)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn05": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Productividad por la enfermera especialista en medicina de familia",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IAP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=251)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn05/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn05",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IAP01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=251)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn08": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Porcentaje de derechohabientes referidos al segundo nivel de atención",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN08\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=255)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn08/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn08",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS IN08\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=255)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn09": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Promedio de consultas de medicina familiar por hora/médico",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS PU01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=257)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn09/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn09",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS PU01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=257)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/caispn14": {
+      "get": {
+        "tags": [ "Caispn" ],
+        "summary": "Promedio de consultas de los servicios de estomatología asistencial",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS PU01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=266)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema` \r\n\t\r\n4.- La presente busqueda contiene filtros y paginación, el valor por defecto para garantizar performance es de 20 registros por página.",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Nombre",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Periodo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Mes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Año",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Rendimiento",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "NumeroPagina",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "NumeroRegistros",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplyIndicador"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": " #### El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": " #### El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": " #### El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": " #### El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": " #### El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": " #### El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/sadim/caispn/actualizarCaispn14/{matricula}": {
+      "post": {
+        "tags": [ "Caispn" ],
+        "summary": "Actualizar indicador Caispn14",
+        "description": "`Información importante:`\r\n\r\n1.- Fuente de Información oficial: Formatos de salida del sistema SIAIS PU01\r\n\t \r\n2.- Fuente de Cálculo oficial: [IMSS (Manual metodológico de indicadores médicos 2019-2024)](https://www.imss.gob.mx/sites/all/statics/profesionalesSalud/investigacionSalud/normatividadInst/ManualMetodologico2019-2024.pdf#page=266)\r\n        \r\n3.- Para un desempeño óptimo debe diseñar su cliente en base a los esquemas establecidos en la sección de `Responses/Code/Schema`",
+        "parameters": [
+          {
+            "name": "matricula",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": " #### El código de estado 200 (OK) retorna éxito",
+            "content": {
+              "aplicación/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "El código 400 (BadRequest) retorna solicitud invalida",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "El código 401 (Unauthorized) retorna un acceso no autorizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "El código 404 (NotFound) El servidor no puede encontrar el recurso solicitado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "406": {
+            "description": "El código 406 (Not Acceptable) El servidor no puede admitir su solicitud.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "423": {
+            "description": "El código 423 (Locked) El recurso al que intenta acceder se encuentra bloqueado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "El código 500 (InternalServerError) retorna servidor no accesible",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CodigoRespuesta"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2546,6 +7870,91 @@
         },
         "additionalProperties": false
       },
+      "Indicador": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodoId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "periodo": {
+            "type": "string",
+            "nullable": false
+          },
+          "mesAbrev": {
+            "type": "string",
+            "nullable": false
+          },
+          "clavePresupuestal": {
+            "type": "string",
+            "nullable": false
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "poblacion": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "fechaInicio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaTermino": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fechaCorte": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "numerador": {
+            "type": "number",
+            "format": "double"
+          },
+          "denominador": {
+            "type": "number",
+            "format": "double"
+          },
+          "multiplicador": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "prevalencia": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "valorReferencia": {
+            "type": "number",
+            "format": "double"
+          },
+          "total": {
+            "type": "number",
+            "format": "double"
+          },
+          "meta": {
+            "type": "number",
+            "format": "double"
+          },
+          "diferenciaMeta": {
+            "type": "number",
+            "format": "double"
+          },
+          "rendimiento": {
+            "type": "string",
+            "nullable": false
+          }
+        },
+        "additionalProperties": false
+      },
       "Metadatos": {
         "type": "object",
         "properties": {
@@ -2673,6 +8082,21 @@
           },
           "datos": {
             "$ref": "#/components/schemas/Proceso"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Metadatos"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ReplyIndicador": {
+        "type": "object",
+        "properties": {
+          "detalles": {
+            "$ref": "#/components/schemas/DetalleRespuesta"
+          },
+          "datos": {
+            "$ref": "#/components/schemas/Indicador"
           },
           "meta": {
             "$ref": "#/components/schemas/Metadatos"

@@ -8926,7 +8926,7 @@
             "$ref": "#/components/schemas/DetalleRespuesta"
           },
           "datos": {
-            "$ref": "#/components/schemas/Autentificacion"
+            "$ref": "#/components/schemas/Autorizacion"
           },
           "meta": {
             "$ref": "#/components/schemas/Metadatos"
